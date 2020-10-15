@@ -9,10 +9,10 @@ export interface PlatesProps
   extends Pick<EquipmentPanelProps, "plates" | "updatePlates"> {}
 
 const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
-  const handlePlateSelection = (plate: Plate) => {
+  const handlePlateSelection = (plate: Plate): void => {
     updatePlates(
       plates.map((p: Plate) => {
-        if (p.weight !== plate.weight) {
+        if (p.id !== plate.id) {
           return p;
         }
         return {
@@ -26,10 +26,10 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   const handlePlateQtyChange = (
     event: ChangeEvent<HTMLInputElement>,
     plate: Plate
-  ) => {
+  ): void => {
     updatePlates(
       plates.map((p: Plate) => {
-        if (p.weight !== plate.weight) {
+        if (p.id !== plate.id) {
           return p;
         }
         return {
@@ -44,14 +44,14 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   };
 
   const plateOptions = plates.map((plate) => {
-    const plateKey = `plate-${plate.weight.toString()}`;
+    const plateKey = `plate-${plate.id}`;
     return (
       <p key={plateKey}>
         <input
           id={plateKey}
           type="checkbox"
           checked={plate.selected}
-          onChange={() => handlePlateSelection(plate)}
+          onChange={(): void => handlePlateSelection(plate)}
         />
         <label htmlFor={plateKey}>{plate.weight} lb</label> x&nbsp;
         <input
@@ -59,7 +59,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           name={`${plateKey}-qty`}
           type="text"
           value={plate.quantity.toString()}
-          onChange={(event) => handlePlateQtyChange(event, plate)}
+          onChange={(event): void => handlePlateQtyChange(event, plate)}
         />
       </p>
     );

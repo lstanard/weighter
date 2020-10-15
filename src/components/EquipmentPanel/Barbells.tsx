@@ -9,10 +9,10 @@ const Barbells = ({
   barbells,
   updateBarbells,
 }: BarbellsProps): ReactElement => {
-  const handleBarbellSelection = (barbell: Barbell) => {
+  const handleBarbellSelection = (barbell: Barbell): void => {
     updateBarbells(
       barbells.map((b: Barbell) => {
-        if (b.name !== barbell.name) {
+        if (b.id !== barbell.id) {
           return b;
         }
         return {
@@ -24,17 +24,17 @@ const Barbells = ({
   };
 
   const barbellOptions = barbells.map((barbell) => {
-    const barbellKey = `barbell-${barbell.name}`;
+    const barbellKey = `barbell-${barbell.id}`;
     return (
       <p key={barbellKey}>
         <input
           id={barbellKey}
           type="checkbox"
           checked={barbell.selected}
-          onChange={() => handleBarbellSelection(barbell)}
+          onChange={(): void => handleBarbellSelection(barbell)}
         />
         <label htmlFor={barbellKey}>
-          {barbell.name} (<small>{barbell.description}</small>)
+          {barbell.name} <br />(<small>{barbell.description}</small>)
         </label>
       </p>
     );

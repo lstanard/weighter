@@ -3,9 +3,12 @@
  */
 export interface Plate {
   /**
+   * Unique ID for this plate.
+   */
+  id: string;
+
+  /**
    * The weight of the plate in pounds.
-   *
-   * Assuming weight is a unique number, using as the key.
    */
   weight: number;
 
@@ -25,6 +28,11 @@ export interface Plate {
  * Single Barbell entity
  */
 export interface Barbell {
+  /**
+   * Unique ID for this barbell.
+   */
+  id: string;
+
   /**
    * The weight of the barbell in pounds.
    */
