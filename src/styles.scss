@@ -44,7 +44,8 @@ h3 {
 .main {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .header {
@@ -60,6 +61,10 @@ h3 {
   padding: 15px 30px;
   max-width: 30%;
   min-width: 290px;
+}
+
+.results-table-container {
+  padding: 15px 30px;
 }
 
 // END TEMP STYLES

@@ -2,16 +2,20 @@ import React, { Dispatch, ReactElement, SetStateAction } from "react";
 
 import Plates from "./Plates";
 import Barbells from "./Barbells";
-import { Plate } from "../../types";
+import { Barbell, Plate } from "../../types";
 
 export interface EquipmentPanelProps {
   plates: Plate[];
+  barbells: Barbell[];
   updatePlates: Dispatch<SetStateAction<Plate[]>>;
+  updateBarbells: Dispatch<SetStateAction<Barbell[]>>;
 }
 
 const EquipmentPanel = ({
   plates,
+  barbells,
   updatePlates,
+  updateBarbells,
 }: EquipmentPanelProps): ReactElement => {
   return (
     <div className="equipment-panel">
@@ -23,7 +27,7 @@ const EquipmentPanel = ({
       <section>
         <form>
           <Plates plates={plates} updatePlates={updatePlates} />
-          <Barbells />
+          <Barbells barbells={barbells} updateBarbells={updateBarbells} />
         </form>
       </section>
     </div>

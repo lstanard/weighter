@@ -5,7 +5,8 @@ import { EquipmentPanelProps } from "./EquipmentPanel";
 
 import styles from "./Plates.module.scss";
 
-export interface PlatesProps extends EquipmentPanelProps {}
+export interface PlatesProps
+  extends Pick<EquipmentPanelProps, "plates" | "updatePlates"> {}
 
 const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   const handlePlateSelection = (plate: Plate) => {
@@ -33,7 +34,10 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
         }
         return {
           ...p,
-          quantity: event.currentTarget.value,
+          quantity: event.currentTarget.value
+            ? // eslint-disable-next-line radix
+              parseInt(event.currentTarget.value)
+            : "",
         };
       })
     );
@@ -49,12 +53,12 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           checked={plate.selected}
           onChange={() => handlePlateSelection(plate)}
         />
-        <label htmlFor={`${plateKey}-qty`}>{plate.weight} lb</label> x&nbsp;
+        <label htmlFor={plateKey}>{plate.weight} lb</label> x&nbsp;
         <input
           id={`${plateKey}-qty`}
           name={`${plateKey}-qty`}
           type="text"
-          value={plate.quantity}
+          value={plate.quantity.toString()}
           onChange={(event) => handlePlateQtyChange(event, plate)}
         />
       </p>

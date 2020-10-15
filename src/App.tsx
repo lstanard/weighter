@@ -1,14 +1,38 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 
 import EquipmentPanel from "./components/EquipmentPanel/EquipmentPanel";
-import { Plate } from "./types";
+import ResultsTable from "./components/ResultsTable";
+import { Plate, Barbell } from "./types";
 
-function App() {
+function App(): ReactElement {
+  const [barbells, setBarbells] = useState<Barbell[]>([
+    {
+      weight: 17,
+      name: "EZ curl",
+      selected: true,
+      length: 48,
+      description: "Standard 4-foot long EZ curl bar",
+    },
+    {
+      weight: 33,
+      name: "6-Foot Olympic",
+      selected: true,
+      length: 72,
+      description: "Standard 6-foot women's Olympic barbell",
+    },
+    {
+      weight: 44,
+      name: "Olympic",
+      selected: false,
+      length: 84,
+      description: "Standard 7-foot Olympic barbell",
+    },
+  ]);
   const [plates, setPlates] = useState<Plate[]>([
     {
       weight: 55,
       quantity: 2,
-      selected: true,
+      selected: false,
     },
     {
       weight: 45,
@@ -18,7 +42,7 @@ function App() {
     {
       weight: 35,
       quantity: 2,
-      selected: true,
+      selected: false,
     },
     {
       weight: 25,
@@ -28,7 +52,7 @@ function App() {
     {
       weight: 15,
       quantity: 2,
-      selected: true,
+      selected: false,
     },
     {
       weight: 10,
@@ -37,7 +61,7 @@ function App() {
     },
     {
       weight: 5,
-      quantity: 2,
+      quantity: 4,
       selected: true,
     },
     {
@@ -55,7 +79,13 @@ function App() {
   return (
     <>
       <div className="main">
-        <EquipmentPanel plates={plates} updatePlates={setPlates} />
+        <EquipmentPanel
+          plates={plates}
+          barbells={barbells}
+          updatePlates={setPlates}
+          updateBarbells={setBarbells}
+        />
+        <ResultsTable plates={plates} />
       </div>
     </>
   );
