@@ -3,6 +3,8 @@ import React, { ReactElement, ChangeEvent } from "react";
 import { Plate } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
 
+import styles from "./Plates.module.scss";
+
 export interface PlatesProps extends EquipmentPanelProps {}
 
 const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
@@ -47,7 +49,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           checked={plate.selected}
           onChange={() => handlePlateSelection(plate)}
         />
-        <label htmlFor={`${plateKey}-qty`}>{plate.weight} lb</label>
+        <label htmlFor={`${plateKey}-qty`}>{plate.weight} lb</label> x&nbsp;
         <input
           id={`${plateKey}-qty`}
           name={`${plateKey}-qty`}
@@ -60,10 +62,12 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   });
 
   return (
-    <>
-      <h3>Plates</h3>
+    <div className={styles.container}>
+      <header>
+        <h3>Plates</h3>
+      </header>
       {plateOptions}
-    </>
+    </div>
   );
 };
 

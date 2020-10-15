@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import "./App.css";
 import EquipmentPanel from "./components/EquipmentPanel/EquipmentPanel";
 import { Plate } from "./types";
 
@@ -54,12 +53,11 @@ function App() {
   ]);
 
   return (
-    <div className="app">
-      <h1>Weighter</h1>
+    <>
       <div className="main">
         <EquipmentPanel plates={plates} updatePlates={setPlates} />
       </div>
-    </div>
+    </>
   );
 }
 

@@ -15,7 +15,11 @@ const EquipmentPanel = ({
 }: EquipmentPanelProps): ReactElement => {
   return (
     <div className="equipment-panel">
-      <h2>Equipment</h2>
+      <div className="header">
+        <header>
+          <h1>weighter</h1>
+        </header>
+      </div>
       <section>
         <form>
           <Plates plates={plates} updatePlates={updatePlates} />
