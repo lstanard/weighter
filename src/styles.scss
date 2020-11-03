@@ -33,6 +33,10 @@ p {
   color: $snow;
 }
 
+p {
+  font-size: 15px;
+}
+
 h3 {
   color: #fff;
   font-size: 13px;
@@ -65,6 +69,11 @@ h3 {
 
 .results-table-container {
   padding: 15px 30px;
+
+  p,
+  p strong {
+    color: #000;
+  }
 }
 
 // END TEMP STYLES
