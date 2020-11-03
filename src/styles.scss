@@ -69,10 +69,26 @@ h3 {
 
 .results-table-container {
   padding: 15px 30px;
+  width: 100%;
 
   p,
   p strong {
     color: #000;
+  }
+}
+
+table {
+  text-align: left;
+  width: 100%;
+
+  td,
+  th {
+    padding: 8px;
+    vertical-align: top;
+  }
+
+  td {
+    border-bottom: 1px solid $concrete;
   }
 }
 

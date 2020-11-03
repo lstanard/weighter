@@ -71,6 +71,7 @@ const getPlateCombinations = (plates: number[]): number[][] => {
 };
 
 /**
+ * Get the sum of all provided plates, doubled
  *
  * @param plates
  */
@@ -79,6 +80,8 @@ const getPlatesTotalWeight = (plates: number[]): number => {
 };
 
 /**
+ * Utility for creating a unique id for each result, mainly
+ * for the purposes of providing a unique key when rendering.
  *
  * @param totalWeight
  * @param plates
@@ -105,15 +108,19 @@ const ResultsTable = ({
         return;
       }
 
-      /**
-       * TODO: This doesn't yet account for plate quantites (treats all as just 2 of each)
-       */
-      const availablePlates: Plate[] = plates.filter((plate) => plate.selected);
+      const flattenedPlates: number[] = [];
+      plates
+        .filter((plate) => plate.selected)
+        .forEach((plate) => {
+          const pairs = plate.quantity ? Math.floor(plate.quantity / 2) : 1;
+          for (let i = 0; i < pairs; i += 1) {
+            flattenedPlates.push(plate.weight);
+          }
+        });
       const plateCombinations: number[][] = getPlateCombinations(
-        availablePlates.map((plate) => plate.weight)
+        flattenedPlates
       );
 
-      // eslint-disable-next-line consistent-return
       plateCombinations.forEach((combination) => {
         const totalWeight = getPlatesTotalWeight(combination) + barbell.weight;
         const result = {
@@ -135,31 +142,45 @@ const ResultsTable = ({
 
   return (
     <div className="results-table-container">
-      <ul>
-        {combinations.length ? (
-          combinations.map((combo) => (
-            <li key={combo.id}>
-              <p>
-                <strong>Barbell: </strong>
-                {combo.barbell.name}
+      <button type="button">Sort by total weight</button>
+      <button type="button">Sort by barbell</button>
+      {combinations.length ? (
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Plates
                 <br />
-                <strong>Total Weight: </strong>
-                {combo.totalWeight}
+                <small>total # of plates to use</small>
+              </th>
+              <th>Barbell</th>
+              <th>
+                Total Weight
                 <br />
-                <strong>Plates: </strong>
-                {combo.plates.map((plate, index) => (
-                  <span key={`plate-${plate}`}>
-                    {plate} x 2 {index !== combo.plates.length - 1 ? "+ " : ""}
-                  </span>
-                ))}
-              </p>
-              <hr />
-            </li>
-          ))
-        ) : (
-          <p>No results</p>
-        )}
-      </ul>
+                <small>including barbell</small>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {combinations.map((result) => (
+              <tr key={result.id}>
+                <td>
+                  {result.plates.map((plate, index) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <span key={`plate-${plate}-${index}`}>
+                      {plate}x2 {index !== result.plates.length - 1 ? "+ " : ""}
+                    </span>
+                  ))}
+                </td>
+                <td>{result.barbell.name}</td>
+                <td>{result.totalWeight}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No results</p>
+      )}
     </div>
   );
 };
