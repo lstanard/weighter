@@ -16,7 +16,7 @@ export interface Plate {
    * The number of plates available.
    * Allows for empty string because of text input element.
    */
-  quantity: number | "";
+  quantity: number;
 
   /**
    * Indicates if this plate is selected as available

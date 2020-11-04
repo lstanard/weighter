@@ -37,7 +37,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           quantity: event.currentTarget.value
             ? // eslint-disable-next-line radix
               parseInt(event.currentTarget.value)
-            : "",
+            : 0,
         };
       })
     );
@@ -58,7 +58,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           id={`${plateKey}-qty`}
           name={`${plateKey}-qty`}
           type="text"
-          value={plate.quantity.toString()}
+          value={!plate.quantity ? "" : plate.quantity.toString()}
           onChange={(event): void => handlePlateQtyChange(event, plate)}
         />
       </p>

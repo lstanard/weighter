@@ -1,11 +1,24 @@
-/* eslint-disable no-unused-vars */
 import React, { ReactElement, useMemo } from "react";
 
 import { Plate, Barbell } from "../../types";
+import {
+  getPlateCombinations,
+  getPlatesTotalWeight,
+  getResultId,
+} from "../../utils";
 
 export interface ResultsTableProps {
   plates: Plate[];
   barbells: Barbell[];
+}
+
+export interface ResultPlate {
+  quantity: number;
+  weight: number;
+}
+
+export interface ResultPlates {
+  [key: string]: ResultPlate;
 }
 
 export interface Result {
@@ -27,80 +40,42 @@ export interface Result {
   /**
    * Plate weights and quantities to achieve total weight.
    */
-  plates: number[];
+  plates: ResultPlates;
 }
 
 /**
- * TODO: Move this into /utils and WRITE TESTS!
+ * Utility for performing some additional transformations on the plates data
+ * before being ready to be rendered - such as grouping plates of the same
+ * weight and determining the total quantity.
  *
  * @param plates
  */
-const getPlateCombinations = (plates: number[]): number[][] => {
-  const data: number[][] = [];
-  const plateCombinations = (arr: number[]): any => {
-    arr.map((plate, index, next) => {
-      const nextArray = [...next];
-      nextArray.splice(index, 1);
-
-      if (!next.length || !nextArray.length) {
-        return;
-      }
-
-      // add individual plates
-      if (!data.find((result) => result.toString() === [plate].toString())) {
-        data.push([plate]);
-      }
-
-      // add combinations
-      const combo = [plate, ...nextArray].sort((a, b) => a - b);
-      if (!data.find((result) => result.toString() === combo.toString())) {
-        data.push(combo);
-      }
-
-      // eslint-disable-next-line consistent-return
-      return plateCombinations(nextArray);
-    });
-  };
-
-  if (plates.length > 1) {
-    plateCombinations(plates);
-  } else {
-    data.push([plates[0]]);
-  }
-  return data;
-};
-
-/**
- * Get the sum of all provided plates, doubled
- *
- * @param plates
- */
-const getPlatesTotalWeight = (plates: number[]): number => {
-  return plates.reduce((prev, current) => prev + current) * 2;
-};
-
-/**
- * Utility for creating a unique id for each result, mainly
- * for the purposes of providing a unique key when rendering.
- *
- * @param totalWeight
- * @param plates
- * @param barbell
- */
-const getResultId = (
-  totalWeight: number,
-  plates: number[],
-  barbell: Barbell
-): string => {
-  return `result-${barbell.id}-${totalWeight}-${plates
-    .toString()
-    .replace(",", "-")}`;
+const getResultPlates = (plates: number[]): any => {
+  const result: ResultPlates = {};
+  plates.forEach((plate) => {
+    if (!(plate in result)) {
+      result[`${plate}`] = {
+        quantity: 2,
+        weight: plate,
+      };
+    } else {
+      result[`${plate}`].quantity = result[`${plate}`].quantity + 2;
+    }
+  });
+  return result;
 };
 
 const ResultsTable = ({
   plates,
   barbells,
 }: ResultsTableProps): ReactElement => {
+  /**
+   * TODO: This will get re-calculated on every keystroke as a user
+   * changes the quantity of a plate. PERFORMANCE IS REALLY BAD!!!
+   * Need to add some additional checks, and have a cached version of the
+   * result or something. Maybe a loading state gets triggered while
+   * calculating new combinations?
+   */
   const combinations = useMemo(() => {
     const results: Result[] = [];
     barbells.forEach((barbell) => {
@@ -126,7 +101,7 @@ const ResultsTable = ({
         const result = {
           id: getResultId(totalWeight, combination, barbell),
           barbell,
-          plates: combination,
+          plates: getResultPlates(combination),
           totalWeight,
         };
         return results.push(result);
@@ -136,6 +111,7 @@ const ResultsTable = ({
     results.sort((a, b) => {
       return a.totalWeight - b.totalWeight;
     });
+    console.log(results);
 
     return results;
   }, [plates, barbells]);
@@ -165,10 +141,13 @@ const ResultsTable = ({
             {combinations.map((result) => (
               <tr key={result.id}>
                 <td>
-                  {result.plates.map((plate, index) => (
+                  {Object.values(result.plates).map((plate, index) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <span key={`plate-${plate}-${index}`}>
-                      {plate}x2 {index !== result.plates.length - 1 ? "+ " : ""}
+                      {plate.weight}x{plate.quantity}{" "}
+                      {index !== Object.values(result.plates).length - 1
+                        ? "+ "
+                        : ""}
                     </span>
                   ))}
                 </td>
