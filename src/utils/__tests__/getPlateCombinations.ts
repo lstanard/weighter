@@ -18,7 +18,9 @@ describe("getPlateCombinations", () => {
 
     it("should return correct results for 3 plates", () => {
       const input = [45, 25, 10];
-      expect(getPlateCombinations(input)).toEqual([
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(7);
+      expect(result).toEqual([
         [45],
         [10, 25, 45],
         [25],
@@ -31,7 +33,9 @@ describe("getPlateCombinations", () => {
 
     it("should return correct results for 4 plates", () => {
       const input = [45, 25, 10, 5];
-      expect(getPlateCombinations(input)).toEqual([
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(15);
+      expect(result).toEqual([
         [45],
         [5, 10, 25, 45],
         [25],
@@ -50,41 +54,41 @@ describe("getPlateCombinations", () => {
       ]);
     });
 
-    it("should return correct results for 5 plates", () => {
-      const input = [45, 25, 10, 5, 2.5];
-      expect(getPlateCombinations(input)).toEqual([
+    it("should return correct results for 4 plates, with duplicates", () => {
+      const input = [45, 25, 5, 5];
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(11);
+      expect(result).toEqual([
         [45],
-        [2.5, 5, 10, 25, 45],
+        [5, 5, 25, 45],
         [25],
-        [2.5, 5, 10, 25],
-        [10],
-        [2.5, 5, 10],
+        [5, 5, 25],
         [5],
-        [2.5, 5],
-        [2.5],
-        [2.5, 10],
-        [5, 10],
-        [2.5, 5, 25],
-        [2.5, 25],
+        [5, 5],
         [5, 25],
-        [2.5, 10, 25],
-        [10, 25],
-        [5, 10, 25],
-        [2.5, 5, 10, 45],
-        [2.5, 5, 45],
-        [2.5, 45],
+        [5, 5, 45],
         [5, 45],
-        [2.5, 10, 45],
-        [10, 45],
-        [5, 10, 45],
-        [2.5, 5, 25, 45],
-        [2.5, 25, 45],
-        [25, 45],
         [5, 25, 45],
-        [2.5, 10, 25, 45],
-        [10, 25, 45],
-        [5, 10, 25, 45],
+        [25, 45],
       ]);
+    });
+
+    it("should return correct number of results for 5 plates", () => {
+      const input = [45, 25, 10, 5, 2.5];
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(31);
+    });
+
+    it("should return correct number of results for 6 plates", () => {
+      const input = [55, 45, 25, 10, 5, 2.5];
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(63);
+    });
+
+    it("should return correct number of results for 7 plates", () => {
+      const input = [55, 45, 25, 10, 5, 2.5, 1.25];
+      const result = getPlateCombinations(input);
+      expect(result.length).toEqual(127);
     });
   });
 });
