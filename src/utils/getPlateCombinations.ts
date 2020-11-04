@@ -5,7 +5,13 @@
  *
  * @param plates
  */
-export default function getPlateCombinations(plates: number[]): number[][] {
+export default function getPlateCombinations(
+  plates: number[]
+): number[][] | [] {
+  if (!plates || !plates.length) {
+    return [];
+  }
+
   const data: number[][] = [];
   const plateCombinations = (arr: number[]): any => {
     arr.map((plate, index, next) => {
