@@ -14,6 +14,16 @@ code {
     monospace;
 }
 
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 // BEGIN TEMP STYLES
 
 .root {
@@ -63,11 +73,15 @@ h3 {
 .equipment-panel {
   background-color: $jade;
   padding: 15px 30px;
+  max-height: 100vh;
   max-width: 30%;
-  min-width: 290px;
+  min-width: 320px;
 }
 
 .results-table-container {
+  height: 100%;
+  overflow: auto;
+  max-height: 100vh;
   padding: 15px 30px;
   width: 100%;
 

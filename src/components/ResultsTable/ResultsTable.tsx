@@ -114,8 +114,6 @@ const ResultsTable = ({
 
   return (
     <div className="results-table-container">
-      <button type="button">Sort by total weight</button>
-      <button type="button">Sort by barbell</button>
       {combinations.length ? (
         <table>
           <thead>

@@ -65,7 +65,7 @@ function App(): ReactElement {
     {
       id: "028c096b-a080-4934-bf94-8b02e042beb6",
       weight: 10,
-      quantity: 3,
+      quantity: 2,
       selected: true,
     },
     {
