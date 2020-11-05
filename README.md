@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# weighter
+
+A tool for displaying every combination, and total weight, for barbells and plates used in weight lifting.
 
 ## Available Scripts
 
