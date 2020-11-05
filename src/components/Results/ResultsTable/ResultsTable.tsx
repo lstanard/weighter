@@ -1,15 +1,15 @@
-import React, { ReactElement, useMemo } from "react";
+import React, { ReactElement, useMemo, useCallback } from "react";
 
-import { Plate, Barbell } from "../../types";
+import { Plates, Barbell, Barbells } from "../../../types";
 import {
   getPlateCombinations,
   getPlatesTotalWeight,
   getResultId,
-} from "../../utils";
+} from "../../../utils";
 
 export interface ResultsTableProps {
-  plates: Plate[];
-  barbells: Barbell[];
+  plates: Plates;
+  barbells: Barbells;
 }
 
 export interface ResultPlate {
@@ -112,6 +112,10 @@ const ResultsTable = ({
     return results;
   }, [plates, barbells]);
 
+  const highlightRow = useCallback((event) => {
+    console.log(event.currentTarget);
+  }, []);
+
   return (
     <div className="results-table-container">
       {combinations.length ? (
@@ -133,7 +137,7 @@ const ResultsTable = ({
           </thead>
           <tbody>
             {combinations.map((result) => (
-              <tr key={result.id}>
+              <tr id={result.id} key={result.id} onClick={highlightRow}>
                 <td>
                   {Object.values(result.plates).map((plate, index) => (
                     <span key={`${result.id}-${plate.weight}`}>

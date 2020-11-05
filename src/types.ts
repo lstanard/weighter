@@ -25,6 +25,11 @@ export interface Plate {
 }
 
 /**
+ * Array of plates
+ */
+export type Plates = Plate[];
+
+/**
  * Single Barbell entity
  */
 export interface Barbell {
@@ -58,3 +63,8 @@ export interface Barbell {
    */
   description?: string;
 }
+
+/**
+ * Array of plates
+ */
+export type Barbells = Barbell[];
