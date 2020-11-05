@@ -92,9 +92,13 @@ const ResultsTable = ({
             flattenedPlates.push(plate.weight);
           }
         });
-      const plateCombinations: number[][] = getPlateCombinations(
+      const plateCombinations: number[][] | null = getPlateCombinations(
         flattenedPlates
       );
+
+      if (!plateCombinations) {
+        return;
+      }
 
       plateCombinations.forEach((combination) => {
         const totalWeight = getPlatesTotalWeight(combination) + barbell.weight;
