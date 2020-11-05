@@ -136,8 +136,7 @@ const ResultsTable = ({
               <tr key={result.id}>
                 <td>
                   {Object.values(result.plates).map((plate, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <span key={`plate-${plate}-${index}`}>
+                    <span key={`${result.id}-${plate.weight}`}>
                       {plate.weight}x{plate.quantity}{" "}
                       {index !== Object.values(result.plates).length - 1
                         ? "+ "
