@@ -65,6 +65,8 @@ export default function getPlateCombinations(
         // console.log("splicedValues", splicedValues);
         addToResults(splicedValues);
         addToResults([plate, ...splicedValues]);
+
+        createSubsetResults(splicedValues, plate, splicedValues.length);
       }
     }
   };
@@ -108,6 +110,8 @@ export default function getPlateCombinations(
 
   const setArray = Array.from(resultSet);
   // sort shortest to longest
-  setArray.sort((a, b) => (a as []).length - (b as []).length);
+  setArray
+    .sort((a, b) => (a as []).length - (b as []).length)
+    .forEach((result) => console.log("result", result));
   return setArray as number[][];
 }
