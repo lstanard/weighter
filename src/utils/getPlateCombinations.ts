@@ -39,9 +39,12 @@ export default function getPlateCombinations(
   };
 
   if (plates.length > 1) {
-    plateCombinations(plates);
+    plateCombinations(plates.sort((a, b) => a - b));
   } else {
     data.push([plates[0]]);
   }
-  return data;
+
+  return data
+    .sort((a, b) => (a as []).length - (b as []).length)
+    .map((result) => result.sort((a, b) => a - b));
 }
