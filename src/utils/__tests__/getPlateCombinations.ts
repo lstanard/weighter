@@ -91,17 +91,16 @@ describe("getPlateCombinations", () => {
     // ✓ should return correct number of results for 7 plates (290ms)
     // ✓ should return correct number of results for 8 plates (3888ms)
 
-    it.only("should return correct number of results for 5 plates", () => {
+    it("should return correct number of results for 5 plates", () => {
       const input = [45, 25, 10, 5, 2.5];
       const result = getPlateCombinations(input);
-      // missing [5,25] and [2.5,10,45]
-      console.log(result);
       expect(result.length).toEqual(31);
     });
 
-    it("should return correct number of results for 6 plates", () => {
+    it.only("should return correct number of results for 6 plates", () => {
       const input = [55, 45, 25, 10, 5, 2.5];
       const result = getPlateCombinations(input);
+      // missing 1!!!
       console.log(result);
       expect(result.length).toEqual(63);
     });

@@ -13,6 +13,8 @@ export default function getPlateCombinations(
     return [];
   }
 
+  // if a set is too slow i could use an object for faster look ups
+  // when checking for duplicates
   const resultSet = new Set();
 
   if (plates.length === 1) {
@@ -34,6 +36,39 @@ export default function getPlateCombinations(
   // add all provided plates
   addToResults(plates);
 
+  const createSubsetResults = (
+    set: number[],
+    plate: number,
+    subsetLength: number
+  ): void => {
+    if (!set.length) {
+      return;
+    }
+
+    for (let q = 0; q < set.length; q += 1) {
+      // add current plate together with each element of set, e.g. [2.5,5]
+      addToResults([plate, set[q]]);
+
+      const subset = [...set];
+      const splicedValues = subset.splice(0, 1 + q);
+      let nextSubset = [];
+
+      if (subset.length) {
+        addToResults(subset);
+        addToResults([plate, ...subset]);
+
+        // nextSubset contains current subset without first or last values
+        nextSubset = [...subset].splice(0, subset.length - 1);
+        createSubsetResults(nextSubset, plate, nextSubset.length);
+      }
+      if (splicedValues.length && splicedValues.length !== subsetLength) {
+        // console.log("splicedValues", splicedValues);
+        addToResults(splicedValues);
+        addToResults([plate, ...splicedValues]);
+      }
+    }
+  };
+
   plates
     .sort((a, b) => a - b)
     .forEach((plate: number, i: number) => {
@@ -42,34 +77,32 @@ export default function getPlateCombinations(
 
       // add individual plate
       addToResults([plate]);
-      // add remaining plates
+      // add all remaining plates other than current plate
       addToResults(otherPlates);
 
-      // get subsets
-      if (otherPlates.length > 1) {
-        otherPlates.forEach((otherPlate: number, j: number) => {
-          // assuming original array was [2.5,5,10,25,45], and the current plate is 2.5
-          const subset = [...otherPlates];
-          // splice value(s) from start of otherPlates [5,10,25,45] => [10,25,45]
-          // store spliced value(s), [5]
-          const splicedValues = subset.splice(0, 1 + j);
+      // drop every odd-numbered index in otherPlates, then loop over those
+      const evenIndexPlates = otherPlates
+        .map((otherPlate, p) => ((p + 1) % 2 === 0 ? otherPlate : 0))
+        .filter(Boolean);
 
-          // add new subset, along with plate and the subset together
-          // [10,25,45] and [2.5,10,25,45]
-          if (subset.length) {
-            addToResults(subset);
-            addToResults([plate, ...subset]);
-          }
-          // add any leftovers, along with plate and the leftovers together
-          // [5] and [2.5,5]
-          if (
-            splicedValues.length &&
-            splicedValues.length !== otherPlates.length
-          ) {
-            addToResults(splicedValues);
-            addToResults([plate, ...splicedValues]);
-          }
-        });
+      if (evenIndexPlates.length > 1) {
+        addToResults([plate, ...evenIndexPlates]);
+        createSubsetResults(evenIndexPlates, plate, otherPlates.length);
+      }
+
+      // drop every even-numbered index in otherPlates, then loop over those
+      const oddIndexPlates = otherPlates
+        .map((otherPlate, p) => ((p + 1) % 2 === 1 ? otherPlate : 0))
+        .filter(Boolean);
+
+      if (oddIndexPlates.length > 1) {
+        addToResults([plate, ...oddIndexPlates]);
+        createSubsetResults(oddIndexPlates, plate, otherPlates.length);
+      }
+
+      // get subsets for remaining plates
+      if (otherPlates.length > 1) {
+        createSubsetResults(otherPlates, plate, otherPlates.length);
       }
     });
 
