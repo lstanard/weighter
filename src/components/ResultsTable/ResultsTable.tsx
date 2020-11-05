@@ -69,13 +69,6 @@ const ResultsTable = ({
   plates,
   barbells,
 }: ResultsTableProps): ReactElement => {
-  /**
-   * TODO: This will get re-calculated on every keystroke as a user
-   * changes the quantity of a plate. PERFORMANCE IS REALLY BAD!!!
-   * Need to add some additional checks, and have a cached version of the
-   * result or something. Maybe a loading state gets triggered while
-   * calculating new combinations?
-   */
   const combinations = useMemo(() => {
     const results: Result[] = [];
     barbells.forEach((barbell) => {
@@ -115,7 +108,6 @@ const ResultsTable = ({
     results.sort((a, b) => {
       return a.totalWeight - b.totalWeight;
     });
-    console.log(results);
 
     return results;
   }, [plates, barbells]);
