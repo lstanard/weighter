@@ -1,50 +1,34 @@
 /**
  * Function for retrieving all possible combinations of plates.
- * This function has extremely poor performance and needs to be
- * re-written, probably without recursion.
  *
- * @param plates
+ * @param plates array of all available plates, [45, 25, 10, ...]
+ * @return array of all possible combinations [[45, 25], [25, 10], ...]
  */
 export default function getPlateCombinations(
   plates: number[]
-): number[][] | [] {
+): number[][] | null {
   if (!plates || !plates.length) {
-    return [];
+    return null;
   }
-
-  const data: number[][] = [];
-  const plateCombinations = (arr: number[]): any => {
-    arr.map((plate, index, next) => {
-      const nextArray = [...next];
-      nextArray.splice(index, 1);
-
-      if (!next.length || !nextArray.length) {
-        return;
+  const foundCombinations: Record<string, boolean> = {};
+  const getCombinations = (
+    current: number[],
+    rest: number[],
+    results: number[][]
+  ): number[][] | null => {
+    if (!current.length && !rest.length) {
+      return null;
+    }
+    if (!rest.length) {
+      if (!foundCombinations[`${current}`]) {
+        foundCombinations[`${current}`] = true;
+        results.push(current);
       }
-
-      // add individual plates
-      if (!data.find((result) => result.toString() === [plate].toString())) {
-        data.push([plate]);
-      }
-
-      // add combinations
-      const combo = [plate, ...nextArray].sort((a, b) => a - b);
-      if (!data.find((result) => result.toString() === combo.toString())) {
-        data.push(combo);
-      }
-
-      // eslint-disable-next-line consistent-return
-      return plateCombinations(nextArray);
-    });
+    } else {
+      getCombinations([...current, rest[0]], rest.slice(1), results);
+      getCombinations(current, rest.slice(1), results);
+    }
+    return results;
   };
-
-  if (plates.length > 1) {
-    plateCombinations(plates.sort((a, b) => a - b));
-  } else {
-    data.push([plates[0]]);
-  }
-
-  return data
-    .sort((a, b) => (a as []).length - (b as []).length)
-    .map((result) => result.sort((a, b) => a - b));
+  return getCombinations([], plates, []);
 }
