@@ -20,7 +20,7 @@ export default function getPlateCombinations(
   }
 
   // add only unique values to the set
-  const addToSet = (newSet: number[]): void => {
+  const addToResults = (newSet: number[]): void => {
     newSet.sort((a, b) => a - b);
     if (
       !Array.from(resultSet).some(
@@ -32,42 +32,49 @@ export default function getPlateCombinations(
   };
 
   // add all provided plates
-  addToSet(plates);
+  addToResults(plates);
 
   plates
     .sort((a, b) => a - b)
-    .forEach((plate: number, i: number, arr: number[]) => {
-      const otherPlates = [...arr];
+    .forEach((plate: number, i: number) => {
+      const otherPlates = [...plates];
       otherPlates.splice(i, 1);
 
-      console.log("plate", plate);
-
       // add individual plate
-      addToSet([plate]);
+      addToResults([plate]);
       // add remaining plates
-      addToSet(otherPlates);
+      addToResults(otherPlates);
 
       // get subsets
       if (otherPlates.length > 1) {
         otherPlates.forEach((otherPlate: number, j: number) => {
+          // assuming original array was [2.5,5,10,25,45], and the current plate is 2.5
           const subset = [...otherPlates];
-          const leftovers = subset.splice(0, 1 + j);
+          // splice value(s) from start of otherPlates [5,10,25,45] => [10,25,45]
+          // store spliced value(s), [5]
+          const splicedValues = subset.splice(0, 1 + j);
 
-          if (leftovers.length !== otherPlates.length) {
-            console.log("leftovers", leftovers);
-            addToSet(leftovers);
-            addToSet([plate, ...leftovers]);
-          }
+          // add new subset, along with plate and the subset together
+          // [10,25,45] and [2.5,10,25,45]
           if (subset.length) {
-            console.log("subset", subset);
-            addToSet(subset);
-            addToSet([plate, ...subset]);
+            addToResults(subset);
+            addToResults([plate, ...subset]);
+          }
+          // add any leftovers, along with plate and the leftovers together
+          // [5] and [2.5,5]
+          if (
+            splicedValues.length &&
+            splicedValues.length !== otherPlates.length
+          ) {
+            addToResults(splicedValues);
+            addToResults([plate, ...splicedValues]);
           }
         });
       }
     });
 
   const setArray = Array.from(resultSet);
+  // sort shortest to longest
   setArray.sort((a, b) => (a as []).length - (b as []).length);
   return setArray as number[][];
 }
