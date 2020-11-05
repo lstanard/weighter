@@ -66,7 +66,8 @@ export default function getPlateCombinations(
         addToResults(splicedValues);
         addToResults([plate, ...splicedValues]);
 
-        createSubsetResults(splicedValues, plate, splicedValues.length);
+        // NOTE: every time I use recursion this gets exponentially slower
+        // createSubsetResults(splicedValues, plate, splicedValues.length);
       }
     }
   };

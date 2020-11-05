@@ -150,6 +150,7 @@ describe("getPlateCombinations", () => {
         "7": 1,
       };
       const result = getPlateCombinations(input);
+      // missing = [2.5, 5, 35, 45, 55], [2.5, 5, 25, 35, 45]
       const resultCombinationLengths = getResultLengths(result);
       expect(resultCombinationLengths).toEqual(expectedCombinationLengths);
       const expectedTotalCombinations = getTotalExpected(
