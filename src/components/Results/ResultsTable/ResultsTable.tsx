@@ -73,14 +73,25 @@ const ResultsTable = ({
   barbells,
   searchValue,
 }: ResultsTableProps): ReactElement => {
+  /**
+   * Creates a result set based on all of the available, selected
+   * barbells and plates.
+   */
   const combinations = useMemo(() => {
     let results: Result[] = [];
+
+    // Loop over all of the barbells, skipping those that aren't selected.
     barbells.forEach((barbell) => {
       if (!barbell.selected) {
         return;
       }
 
       const flattenedPlates: number[] = [];
+
+      // Create a flat array of selected plates, with each plate representing
+      // a pair, disregarding odd numbers that don't make a complete set since
+      // we want to be able to double everything, accounting for both sides of
+      // the barbell. e.g., 3x10, 4x5, 2x45 = [45, 10, 5, 5]
       plates
         .filter((plate) => plate.selected)
         .forEach((plate) => {
@@ -89,6 +100,8 @@ const ResultsTable = ({
             flattenedPlates.push(plate.weight);
           }
         });
+
+      // Get all possible combinations of the provided plates
       const plateCombinations: number[][] | null = getPlateCombinations(
         flattenedPlates
       );
@@ -97,6 +110,7 @@ const ResultsTable = ({
         return;
       }
 
+      // Create each final Result and push to the results array
       plateCombinations.forEach((combination) => {
         const totalWeight = getPlatesTotalWeight(combination) + barbell.weight;
         const result = {
@@ -109,12 +123,14 @@ const ResultsTable = ({
       });
     });
 
+    // TODO: will want to move this, both for performance and better code organization
     if (searchValue) {
       results = results.filter((result) =>
         result.totalWeight.toString().includes(searchValue)
       );
     }
 
+    // TODO: will want to move this sorting as well
     results.sort((a, b) => {
       return a.totalWeight - b.totalWeight;
     });
