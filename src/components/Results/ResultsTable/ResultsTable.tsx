@@ -9,11 +9,6 @@ import {
 
 import styles from "./ResultsTable.module.scss";
 
-export interface ResultsTableProps {
-  plates: Plates;
-  barbells: Barbells;
-}
-
 export interface ResultPlate {
   quantity: number;
   weight: number;
@@ -67,12 +62,19 @@ const getResultPlates = (plates: number[]): any => {
   return result;
 };
 
+export interface ResultsTableProps {
+  plates: Plates;
+  barbells: Barbells;
+  searchValue: string;
+}
+
 const ResultsTable = ({
   plates,
   barbells,
+  searchValue,
 }: ResultsTableProps): ReactElement => {
   const combinations = useMemo(() => {
-    const results: Result[] = [];
+    let results: Result[] = [];
     barbells.forEach((barbell) => {
       if (!barbell.selected) {
         return;
@@ -107,12 +109,18 @@ const ResultsTable = ({
       });
     });
 
+    if (searchValue) {
+      results = results.filter((result) =>
+        result.totalWeight.toString().includes(searchValue)
+      );
+    }
+
     results.sort((a, b) => {
       return a.totalWeight - b.totalWeight;
     });
 
     return results;
-  }, [plates, barbells]);
+  }, [barbells, searchValue, plates]);
 
   const highlightRow = useCallback((event) => {
     // console.log(event.currentTarget);

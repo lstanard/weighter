@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from "react";
+import React, { ReactElement, useCallback, useState } from "react";
 
 import { Plates, Barbells } from "../../types";
 import ResultsTable from "./ResultsTable";
@@ -11,8 +11,14 @@ export interface ResultsProps {
 }
 
 function Results({ plates, barbells }: ResultsProps): ReactElement {
+  const [searchValue, setSearchValue] = useState("");
   const handleFind = useCallback((event) => {
-    console.log(event.currentTarget.value);
+    const { value } = event.currentTarget;
+    if (value.length < 2) {
+      setSearchValue("");
+      return;
+    }
+    setSearchValue(value);
   }, []);
 
   return (
@@ -20,7 +26,11 @@ function Results({ plates, barbells }: ResultsProps): ReactElement {
       <div className={styles.resultsHeader}>
         <input type="text" placeholder="Find weight" onChange={handleFind} />
       </div>
-      <ResultsTable plates={plates} barbells={barbells} />
+      <ResultsTable
+        plates={plates}
+        barbells={barbells}
+        searchValue={searchValue}
+      />
     </div>
   );
 }
