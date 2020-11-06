@@ -7,6 +7,8 @@ import {
   getResultId,
 } from "../../../utils";
 
+import styles from "./ResultsTable.module.scss";
+
 export interface ResultsTableProps {
   plates: Plates;
   barbells: Barbells;
@@ -113,11 +115,11 @@ const ResultsTable = ({
   }, [plates, barbells]);
 
   const highlightRow = useCallback((event) => {
-    console.log(event.currentTarget);
+    // console.log(event.currentTarget);
   }, []);
 
   return (
-    <div className="results-table-container">
+    <div className={styles.container}>
       {combinations.length ? (
         <table>
           <thead>
@@ -127,8 +129,8 @@ const ResultsTable = ({
                 <br />
                 <small>total # of plates to use</small>
               </th>
-              <th>Barbell</th>
-              <th>
+              <th className={styles.tableHeaderColBarbell}>Barbell</th>
+              <th className={styles.tableHeaderColTotal}>
                 Total Weight
                 <br />
                 <small>including barbell</small>
@@ -139,17 +141,24 @@ const ResultsTable = ({
             {combinations.map((result) => (
               <tr id={result.id} key={result.id} onClick={highlightRow}>
                 <td>
-                  {Object.values(result.plates).map((plate, index) => (
-                    <span key={`${result.id}-${plate.weight}`}>
-                      {plate.weight}x{plate.quantity}{" "}
-                      {index !== Object.values(result.plates).length - 1
-                        ? "+ "
-                        : ""}
-                    </span>
+                  {Object.values(result.plates).map((plate) => (
+                    <div
+                      key={`${result.id}-${plate.weight}`}
+                      className={styles.resultGroup}
+                    >
+                      <span className={styles.resultPlate}>
+                        <span className={styles.resultPlateQty}>
+                          {plate.quantity}x
+                        </span>
+                        {plate.weight}
+                      </span>
+                    </div>
                   ))}
                 </td>
-                <td>{result.barbell.name}</td>
-                <td>{result.totalWeight}</td>
+                <td className={styles.tableColBarbell}>
+                  {result.barbell.name}
+                </td>
+                <td className={styles.tableColTotal}>{result.totalWeight}</td>
               </tr>
             ))}
           </tbody>

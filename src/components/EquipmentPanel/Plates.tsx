@@ -46,20 +46,24 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   const plateOptions = plates.map((plate) => {
     const plateKey = `plate-${plate.id}`;
     return (
-      <p key={plateKey}>
+      <p key={plateKey} className={styles.plateRow}>
         <input
           id={plateKey}
           type="checkbox"
           checked={plate.selected}
           onChange={(): void => handlePlateSelection(plate)}
+          className={styles.plateSelect}
         />
-        <label htmlFor={plateKey}>{plate.weight} lb</label> x&nbsp;
+        <label htmlFor={plateKey} className={styles.plateLabel}>
+          {plate.weight} lb
+        </label>
         <input
           id={`${plateKey}-qty`}
           name={`${plateKey}-qty`}
           type="text"
           value={!plate.quantity ? "" : plate.quantity.toString()}
           onChange={(event): void => handlePlateQtyChange(event, plate)}
+          className={styles.plateQtyInput}
         />
       </p>
     );
@@ -67,8 +71,9 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
 
   return (
     <div className={styles.container}>
-      <header>
-        <h3>Plates</h3>
+      <header className={styles.header}>
+        <h3 className={styles.subhead}>Plates</h3>
+        <span className={styles.subhead}>Qty.</span>
       </header>
       {plateOptions}
     </div>

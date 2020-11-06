@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useCallback } from "react";
 
 import { Plates, Barbells } from "../../types";
 import ResultsTable from "./ResultsTable";
@@ -11,9 +11,15 @@ export interface ResultsProps {
 }
 
 function Results({ plates, barbells }: ResultsProps): ReactElement {
+  const handleFind = useCallback((event) => {
+    console.log(event.currentTarget.value);
+  }, []);
+
   return (
     <div className={styles.container}>
-      <header>Results header</header>
+      <div className={styles.resultsHeader}>
+        <input type="text" placeholder="Find weight" onChange={handleFind} />
+      </div>
       <ResultsTable plates={plates} barbells={barbells} />
     </div>
   );

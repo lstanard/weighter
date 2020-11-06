@@ -1,0 +1,69 @@
+@import "../../../scss/globals";
+@import "../variables";
+
+.container {
+  height: 100%;
+  overflow: auto;
+  max-height: calc(100vh - #{$results-header-height});
+  padding: 15px 30px;
+  width: 100%;
+
+  p,
+  p strong {
+    color: #000;
+  }
+
+  table {
+    text-align: left;
+    width: 100%;
+
+    th {
+      vertical-align: top;
+    }
+
+    td,
+    th {
+      padding: 5px 8px 5px 0;
+      vertical-align: middle;
+    }
+
+    th {
+      padding-bottom: 8px;
+    }
+
+    td {
+      border-bottom: 1px solid $concrete;
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  .tableHeaderColTotal,
+  .tableColTotal {
+    text-align: right;
+  }
+}
+
+.resultGroup {
+  display: inline-block;
+}
+
+.resultPlate {
+  border: 1px solid $concrete;
+  border-radius: 3px;
+  color: #333;
+  display: inline-block;
+  margin-right: 3px;
+  min-width: 70px;
+  padding: 5px 3px;
+  text-align: center;
+}
+
+.resultPlateQty {
+  font-size: 12px;
+  margin-right: 2px;
+  opacity: 0.5;
+}
