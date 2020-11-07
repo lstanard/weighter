@@ -1,6 +1,8 @@
 import React, { ReactElement } from "react";
 import { Barbell } from "../../types";
+
 import { EquipmentPanelProps } from "./EquipmentPanel";
+import Checkbox from "../Checkbox";
 
 import styles from "./Barbells.module.scss";
 
@@ -28,17 +30,20 @@ const Barbells = ({
   const barbellOptions = barbells.map((barbell) => {
     const barbellKey = `barbell-${barbell.id}`;
     return (
-      <p key={barbellKey}>
-        <input
+      <div key={barbellKey} className={styles.barbellRow}>
+        <Checkbox
           id={barbellKey}
-          type="checkbox"
-          checked={barbell.selected}
+          defaultChecked={barbell.selected}
           onChange={(): void => handleBarbellSelection(barbell)}
+          className={styles.barbellSelect}
         />
-        <label htmlFor={barbellKey}>
-          {barbell.name} <br />(<small>{barbell.description}</small>)
+        <label htmlFor={barbellKey} className={styles.barbellLabel}>
+          <span className={styles.barbellName}>{barbell.name}</span>
+          <span className={styles.barbellDesc}>
+            {barbell.length} inches / {barbell.weight} lb
+          </span>
         </label>
-      </p>
+      </div>
     );
   });
 
@@ -47,7 +52,10 @@ const Barbells = ({
       <header className={styles.header}>
         <h3 className={styles.sectionTitle}>Barbells</h3>
       </header>
-      {barbellOptions}
+      <div className={styles.barbellOptions}>{barbellOptions}</div>
+      <button type="button" onClick={() => console.log("add barbell")}>
+        Add
+      </button>
     </div>
   );
 };

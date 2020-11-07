@@ -4,8 +4,8 @@
   background-color: $night-blue;
   padding: #{$std-padding / 2} $std-padding;
   max-height: 100vh;
-  max-width: 30%;
-  min-width: $sidebar-width;
+  max-width: $sidebar-max-width;
+  min-width: $sidebar-min-width;
 
   p,
   label {

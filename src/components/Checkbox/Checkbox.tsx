@@ -13,7 +13,7 @@ import styles from "./Checkbox.module.scss";
 export interface CheckboxProps {
   id: string;
   defaultChecked: boolean;
-  className: string;
+  className?: string;
   onChange: Function;
 }
 

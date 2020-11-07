@@ -2,4 +2,39 @@
 
 .sectionTitle {
   @include section-title;
+
+  margin-bottom: 18px;
+}
+
+.barbellOptions {
+  margin-bottom: #{$std-margin / 1.5};
+}
+
+.barbellRow {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 8px 0 12px;
+}
+
+.barbellLabel {
+  flex: 2;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  padding: 0 10px 3px 16px;
+  text-transform: uppercase;
+}
+
+.barbellName {
+  line-height: 20px;
+}
+
+.barbellDesc {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0;
+  margin: 2px 0 0;
+  opacity: 0.5;
+  text-transform: none;
 }
