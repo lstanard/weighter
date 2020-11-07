@@ -4,6 +4,8 @@ import Plates from "./Plates";
 import Barbells from "./Barbells";
 import { Barbell, Plate } from "../../types";
 
+import styles from "./EquipmentPanel.module.scss";
+
 export interface EquipmentPanelProps {
   plates: Plate[];
   barbells: Barbell[];
@@ -18,18 +20,14 @@ const EquipmentPanel = ({
   updateBarbells,
 }: EquipmentPanelProps): ReactElement => {
   return (
-    <div className="equipment-panel">
-      <div className="header">
-        <header>
-          <h1>weighter</h1>
-        </header>
-      </div>
-      <section>
-        <form>
-          <Plates plates={plates} updatePlates={updatePlates} />
-          <Barbells barbells={barbells} updateBarbells={updateBarbells} />
-        </form>
-      </section>
+    <div className={styles.container}>
+      <header className={styles.appHeader}>
+        <h1>weighter</h1>
+      </header>
+      <form>
+        <Plates plates={plates} updatePlates={updatePlates} />
+        <Barbells barbells={barbells} updateBarbells={updateBarbells} />
+      </form>
     </div>
   );
 };

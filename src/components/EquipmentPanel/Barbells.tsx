@@ -2,6 +2,8 @@ import React, { ReactElement } from "react";
 import { Barbell } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
 
+import styles from "./Barbells.module.scss";
+
 export interface BarbellsProps
   extends Pick<EquipmentPanelProps, "barbells" | "updateBarbells"> {}
 
@@ -41,12 +43,12 @@ const Barbells = ({
   });
 
   return (
-    <>
-      <header>
-        <h3>Barbells</h3>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <h3 className={styles.sectionTitle}>Barbells</h3>
       </header>
       {barbellOptions}
-    </>
+    </div>
   );
 };
 

@@ -1,8 +1,9 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useCallback } from "react";
 import Select, { ValueType, StylesConfig } from "react-select";
 
 import { Plate } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
+import Checkbox from "../Checkbox";
 
 import styles from "./Plates.module.scss";
 
@@ -19,6 +20,43 @@ const PLATE_QTY_OPTIONS = [
 ];
 
 type OptionType = { label: string; value: number };
+
+const customSelectStyles: StylesConfig = {
+  control: (provided) => ({
+    ...provided,
+    background: "transparent",
+    border: 0,
+    borderRadius: 3,
+    color: "#fff",
+    minHeight: 15,
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    display: "none",
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    padding: "3px 8px",
+  }),
+  menu: (provided) => ({
+    ...provided,
+    borderRadius: 0,
+    marginTop: 1,
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "#fff",
+    opacity: 0.5,
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "#fff",
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    padding: 0,
+  }),
+};
 
 export interface PlatesProps
   extends Pick<EquipmentPanelProps, "plates" | "updatePlates"> {}
@@ -52,67 +90,48 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     );
   };
 
-  const customSelectStyles: StylesConfig = {
-    control: (provided) => ({
-      ...provided,
-      border: 0,
-      borderRadius: 3,
-      minHeight: 30,
-    }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      padding: "3px 8px",
-    }),
-    menu: (provided) => ({
-      ...provided,
-      borderRadius: 0,
-      marginTop: 1,
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-    }),
-  };
-
-  const getDefaultSelectValue = (
-    plateQty: number,
-    selected: boolean
-  ): OptionType | null => {
-    const defaultValue = PLATE_QTY_OPTIONS.filter((option) => {
-      return option.value === plateQty;
-    })[0];
-    if (selected) {
-      return defaultValue;
-    }
-    return null;
-  };
+  const getDefaultSelectValue = useCallback(
+    (plateQty: number, selected: boolean) => {
+      const defaultValue = PLATE_QTY_OPTIONS.filter((option) => {
+        return option.value === plateQty;
+      })[0];
+      if (selected && defaultValue) {
+        return defaultValue;
+      }
+      return null;
+    },
+    []
+  );
 
   const plateOptions = plates.map((plate) => {
     const plateKey = `plate-${plate.id}`;
     return (
       <div key={plateKey} className={styles.plateRow}>
-        <input
+        <Checkbox
           id={plateKey}
-          type="checkbox"
-          checked={plate.selected}
+          defaultChecked={plate.selected}
           onChange={(): void => handlePlateSelection(plate)}
           className={styles.plateSelect}
         />
         <label htmlFor={plateKey} className={styles.plateLabel}>
-          {plate.weight} lb
+          <span className={styles.plateLabelWeight}>{plate.weight}</span>
+          <span className={styles.plateLabelUnits}>lb</span>
         </label>
-        <Select
-          id={`${plateKey}-qty`}
-          placeholder="Qty."
-          onChange={(selectedOption: ValueType<OptionType>): void => {
-            const { value } = selectedOption as OptionType;
-            handlePlateQtyChange(value, plate);
-          }}
-          options={PLATE_QTY_OPTIONS}
-          className={styles.plateQtySelect}
-          styles={customSelectStyles}
-          defaultValue={getDefaultSelectValue(plate.quantity, plate.selected)}
-          // defaultMenuIsOpen
-        />
+        <span className={styles.plateQty}>
+          <span className={styles.plateQtyTimes}>x</span>
+          <Select
+            id={`${plateKey}-qty`}
+            placeholder="Qty."
+            onChange={(selectedOption: ValueType<OptionType>): void => {
+              const { value } = selectedOption as OptionType;
+              handlePlateQtyChange(value, plate);
+            }}
+            options={PLATE_QTY_OPTIONS}
+            className={styles.plateQtySelect}
+            styles={customSelectStyles}
+            defaultValue={getDefaultSelectValue(plate.quantity, plate.selected)}
+          />
+        </span>
       </div>
     );
   });
@@ -120,9 +139,12 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h3 className={styles.subhead}>Plates</h3>
+        <h3 className={styles.sectionTitle}>Weight Plates</h3>
       </header>
-      {plateOptions}
+      <div className={styles.plateOptions}>{plateOptions}</div>
+      <button type="button" onClick={() => console.log("add plates")}>
+        Add
+      </button>
     </div>
   );
 };

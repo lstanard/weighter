@@ -14,7 +14,7 @@ export default [
   {
     id: "1bf5065e-ee44-4cb2-bf1b-321d0651e9f2",
     weight: 45,
-    quantity: 2,
+    quantity: 6,
     selected: true,
   },
   {
@@ -57,6 +57,6 @@ export default [
     id: "773e8524-09ee-46cc-a2ed-411b2fa27803",
     weight: 1.25,
     quantity: 2,
-    selected: true,
+    selected: false,
   },
 ];

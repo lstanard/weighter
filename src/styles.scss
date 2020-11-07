@@ -1,10 +1,11 @@
 @import "./scss/globals";
 
 body {
+  background: $cream;
   color: $slate;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,31 +26,10 @@ html {
   box-sizing: inherit;
 }
 
-// BEGIN TEMP STYLES
+// Global layout styles
 
 .root {
   height: 100%;
-}
-
-h1 {
-  color: $lime;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 300;
-  margin: 0;
-}
-
-h3 {
-  margin: 0;
-}
-
-h2,
-h3 {
-  color: $concrete;
-}
-
-p {
-  color: $slate;
-  font-size: 15px;
 }
 
 .main {
@@ -59,24 +39,6 @@ p {
   min-height: 100vh;
 }
 
-.header {
-  margin: 15px 0 30px;
-}
-
 .availability-panel {
   width: 70%;
 }
-
-.equipment-panel {
-  background-color: $jade;
-  padding: 15px 30px;
-  max-height: 100vh;
-  max-width: 30%;
-  min-width: 300px;
-
-  p {
-    color: $concrete;
-  }
-}
-
-// END TEMP STYLES
