@@ -2,9 +2,12 @@
 @import "../variables";
 
 .container {
+  background: $snow;
+  border-radius: 6px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.16);
   height: 100%;
   overflow: auto;
-  max-height: calc(100vh - #{$results-header-height});
+  max-height: calc(100vh - #{$std-padding * 2} - #{$results-header-height});
   padding: 15px 30px;
   width: 100%;
 
@@ -65,5 +68,5 @@
 .resultPlateQty {
   font-size: 12px;
   margin-right: 2px;
-  opacity: 0.5;
+  opacity: 0.6;
 }

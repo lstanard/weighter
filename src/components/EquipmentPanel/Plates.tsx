@@ -113,7 +113,11 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           onChange={(): void => handlePlateSelection(plate)}
           className={styles.plateSelect}
         />
-        <label htmlFor={plateKey} className={styles.plateLabel}>
+        <label
+          id={`label-${plateKey}`}
+          htmlFor={plateKey}
+          className={styles.plateLabel}
+        >
           <span className={styles.plateLabelWeight}>{plate.weight}</span>
           <span className={styles.plateLabelUnits}>lb</span>
         </label>
@@ -130,6 +134,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
             className={styles.plateQtySelect}
             styles={customSelectStyles}
             defaultValue={getDefaultSelectValue(plate.quantity, plate.selected)}
+            aria-labelledby={`label-${plateKey}`}
           />
         </span>
       </div>
@@ -139,7 +144,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h3 className={styles.sectionTitle}>Weight Plates</h3>
+        <h2 className={styles.sectionTitle}>Weight Plates</h2>
       </header>
       <div className={styles.plateOptions}>{plateOptions}</div>
       <button type="button" onClick={() => console.log("add plates")}>

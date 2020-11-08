@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo, useCallback } from "react";
+import React, { ReactElement, useMemo } from "react";
 
 import { Plates, Barbell, Barbells } from "../../../types";
 import {
@@ -125,8 +125,9 @@ const ResultsTable = ({
 
     // TODO: will want to move this, both for performance and better code organization
     if (searchValue) {
+      const searchPattern = new RegExp(`^${searchValue}`, "i");
       results = results.filter((result) =>
-        result.totalWeight.toString().includes(searchValue)
+        searchPattern.test(result.totalWeight.toString())
       );
     }
 
@@ -137,10 +138,6 @@ const ResultsTable = ({
 
     return results;
   }, [barbells, searchValue, plates]);
-
-  const highlightRow = useCallback((event) => {
-    // console.log(event.currentTarget);
-  }, []);
 
   return (
     <div className={styles.container}>
@@ -163,7 +160,7 @@ const ResultsTable = ({
           </thead>
           <tbody>
             {combinations.map((result) => (
-              <tr id={result.id} key={result.id} onClick={highlightRow}>
+              <tr id={result.id} key={result.id} tabIndex={0}>
                 <td>
                   {Object.values(result.plates).map((plate) => (
                     <div

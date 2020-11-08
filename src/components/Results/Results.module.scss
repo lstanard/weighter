@@ -3,6 +3,7 @@
 
 .container {
   max-height: 100vh;
+  padding: $std-padding;
   width: 100%;
 }
 
@@ -12,4 +13,17 @@
   height: $results-header-height;
   padding: 30px;
   position: sticky;
+}
+
+.find {
+  appearance: none;
+  background: $snow;
+  border: 0;
+  border-radius: 6px;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px 0 $std-padding;
+  width: 216px;
 }

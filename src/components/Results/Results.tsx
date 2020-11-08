@@ -24,7 +24,13 @@ function Results({ plates, barbells }: ResultsProps): ReactElement {
   return (
     <div className={styles.container}>
       <div className={styles.resultsHeader}>
-        <input type="text" placeholder="Find weight" onChange={handleFind} />
+        <input
+          type="text"
+          placeholder="Find weight, e.g. 135"
+          onChange={handleFind}
+          className={styles.find}
+          title="Find weight, e.g. 135"
+        />
       </div>
       <ResultsTable
         plates={plates}

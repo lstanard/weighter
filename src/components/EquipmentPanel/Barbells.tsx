@@ -50,7 +50,7 @@ const Barbells = ({
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h3 className={styles.sectionTitle}>Barbells</h3>
+        <h2 className={styles.sectionTitle}>Barbells</h2>
       </header>
       <div className={styles.barbellOptions}>{barbellOptions}</div>
       <button type="button" onClick={() => console.log("add barbell")}>
