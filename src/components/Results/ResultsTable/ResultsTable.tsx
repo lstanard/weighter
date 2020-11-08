@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { ReactElement, useMemo } from "react";
 
 import { Plates, Barbell, Barbells } from "../../../types";
@@ -37,7 +38,7 @@ export interface Result {
   /**
    * Plate weights and quantities to achieve total weight.
    */
-  plates: ResultPlates;
+  plates: ResultPlate[];
 }
 
 /**
@@ -47,7 +48,7 @@ export interface Result {
  *
  * @param plates
  */
-const getResultPlates = (plates: number[]): any => {
+const getResultPlates = (plates: number[]): ResultPlate[] => {
   const result: ResultPlates = {};
   plates.forEach((plate) => {
     if (!(plate in result)) {
@@ -59,19 +60,23 @@ const getResultPlates = (plates: number[]): any => {
       result[`${plate}`].quantity = result[`${plate}`].quantity + 2;
     }
   });
-  return result;
+  return Object.keys(result)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((key) => result[key]);
 };
 
 export interface ResultsTableProps {
   plates: Plates;
   barbells: Barbells;
-  searchValue: string;
+  searchValue: number;
+  searchVariance: number;
 }
 
 const ResultsTable = ({
   plates,
   barbells,
   searchValue,
+  searchVariance,
 }: ResultsTableProps): ReactElement => {
   /**
    * Creates a result set based on all of the available, selected
@@ -125,6 +130,10 @@ const ResultsTable = ({
 
     // TODO: will want to move this, both for performance and better code organization
     if (searchValue) {
+      if (searchVariance) {
+        // console.log("searchRange", searchRange);
+      }
+
       const searchPattern = new RegExp(`^${searchValue}`, "i");
       results = results.filter((result) =>
         searchPattern.test(result.totalWeight.toString())
@@ -137,7 +146,27 @@ const ResultsTable = ({
     });
 
     return results;
-  }, [barbells, searchValue, plates]);
+  }, [barbells, searchValue, plates, searchVariance]);
+
+  const tableRows = combinations.map((result) => (
+    <tr id={result.id} key={result.id} tabIndex={0}>
+      <td className={styles.tableColPlates}>
+        {result.plates.map((plate) => (
+          <div
+            key={`${result.id}-${plate.weight}`}
+            className={styles.resultGroup}
+          >
+            <span className={styles.resultPlate}>
+              <span className={styles.resultPlateQty}>{plate.quantity}x</span>
+              {plate.weight}
+            </span>
+          </div>
+        ))}
+      </td>
+      <td className={styles.tableColBarbell}>{result.barbell.name}</td>
+      <td className={styles.tableColTotal}>{result.totalWeight} lb</td>
+    </tr>
+  ));
 
   return (
     <div className={styles.container}>
@@ -145,44 +174,12 @@ const ResultsTable = ({
         <table>
           <thead>
             <tr>
-              <th>
-                Plates
-                <br />
-                <small>total # of plates to use</small>
-              </th>
+              <th className={styles.tableHeaderColPlates}>Plates</th>
               <th className={styles.tableHeaderColBarbell}>Barbell</th>
-              <th className={styles.tableHeaderColTotal}>
-                Total Weight
-                <br />
-                <small>including barbell</small>
-              </th>
+              <th className={styles.tableHeaderColTotal}>Total Weight</th>
             </tr>
           </thead>
-          <tbody>
-            {combinations.map((result) => (
-              <tr id={result.id} key={result.id} tabIndex={0}>
-                <td>
-                  {Object.values(result.plates).map((plate) => (
-                    <div
-                      key={`${result.id}-${plate.weight}`}
-                      className={styles.resultGroup}
-                    >
-                      <span className={styles.resultPlate}>
-                        <span className={styles.resultPlateQty}>
-                          {plate.quantity}x
-                        </span>
-                        {plate.weight}
-                      </span>
-                    </div>
-                  ))}
-                </td>
-                <td className={styles.tableColBarbell}>
-                  {result.barbell.name}
-                </td>
-                <td className={styles.tableColTotal}>{result.totalWeight}</td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody>{tableRows}</tbody>
         </table>
       ) : (
         <p>No results</p>

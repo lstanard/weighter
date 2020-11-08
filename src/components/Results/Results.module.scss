@@ -3,7 +3,7 @@
 
 .container {
   max-height: 100vh;
-  padding: $std-padding;
+  padding: $std-padding #{$std-padding * 2};
   width: 100%;
 }
 
@@ -11,7 +11,6 @@
   align-items: center;
   display: flex;
   height: $results-header-height;
-  padding: 30px;
   position: sticky;
 }
 
@@ -26,4 +25,28 @@
   line-height: 40px;
   padding: 0 16px 0 $std-padding;
   width: 216px;
+}
+
+.findInput {
+  display: inline-block;
+  position: relative;
+
+  &:before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg id='icon_action_search_24px' data-name='icon/action/search_24px' opacity='0.753'%3E%3Crect id='Boundary' width='20' height='20' fill='none'/%3E%3Cpath id='_Color' data-name=' ↳Color' d='M12.808,14h0l-4-3.993V9.373l-.216-.224a5.21,5.21,0,1,1,.56-.56l.224.216h.633l3.994,4L12.808,14ZM5.2,1.6a3.6,3.6,0,1,0,3.6,3.6A3.606,3.606,0,0,0,5.2,1.6Z' transform='translate(3 3)' fill='%23746766'/%3E%3C/g%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    content: "";
+    height: 20px;
+    left: 8px;
+    position: absolute;
+    top: 10px;
+    width: 20px;
+  }
+}
+
+.separator,
+.units {
+  font-size: 14px;
+  margin: 0 10px;
+  opacity: 0.6;
 }

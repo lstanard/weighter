@@ -26,17 +26,19 @@
 
     td,
     th {
-      padding: 5px 8px 5px 0;
+      padding: 10px 8px 10px 0;
       vertical-align: middle;
     }
 
     th {
       padding-bottom: 8px;
+      white-space: nowrap;
     }
 
     td {
       border-bottom: 1px solid $concrete;
-      font-size: 14px;
+      color: $chocolate;
+      font-size: 20px;
     }
 
     tr:last-child td {
@@ -44,9 +46,29 @@
     }
   }
 
+  .tableHeaderColPlates,
+  .tableColPlates {
+    width: 55%;
+  }
+
+  .tableHeaderColBarbell,
+  .tableColBarbell {
+    text-align: center;
+    width: 30%;
+  }
+
   .tableHeaderColTotal,
   .tableColTotal {
-    text-align: right;
+    text-align: center;
+    width: 15%;
+  }
+
+  .tableHeaderColPlates,
+  .tableHeaderColBarbell,
+  .tableHeaderColTotal {
+    color: $night-blue;
+    font-size: 16px;
+    text-transform: uppercase;
   }
 }
 
@@ -55,13 +77,10 @@
 }
 
 .resultPlate {
-  border: 1px solid $concrete;
   border-radius: 3px;
-  color: #333;
   display: inline-block;
   margin-right: 3px;
   min-width: 60px;
-  padding: 5px 3px;
   text-align: center;
 }
 
