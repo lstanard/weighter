@@ -8,6 +8,7 @@ import {
   getResultId,
 } from "../../../utils";
 import DisplayWeight from "../../DisplayWeight";
+import ResultsTableHeader from "./ResultsTableHeader";
 
 import styles from "./ResultsTable.module.scss";
 
@@ -175,13 +176,7 @@ const ResultsTable = ({
     <div className={styles.container}>
       {combinations.length ? (
         <table>
-          <thead>
-            <tr>
-              <th className={styles.tableHeaderColPlates}>Plates</th>
-              <th className={styles.tableHeaderColBarbell}>Barbell</th>
-              <th className={styles.tableHeaderColTotal}>Total Weight</th>
-            </tr>
-          </thead>
+          <ResultsTableHeader />
           <tbody>{tableRows}</tbody>
         </table>
       ) : (

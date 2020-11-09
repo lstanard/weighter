@@ -19,11 +19,11 @@ exports[`EquipmentPanel should render correctly 1`] = `
         <header
           class="header"
         >
-          <h3
+          <h2
             class="sectionTitle"
           >
             Weight Plates
-          </h3>
+          </h2>
         </header>
         <div
           class="plateOptions"
@@ -48,12 +48,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-c68afd81-877b-4601-b851-8edbaccd6af6"
+              id="label-plate-c68afd81-877b-4601-b851-8edbaccd6af6"
             >
               <span
                 class="plateLabelWeight"
               >
                 100
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -92,6 +94,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-c68afd81-877b-4601-b851-8edbaccd6af6"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -156,12 +159,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-750c64fd-9a10-45dc-885c-f089ac3a2258"
+              id="label-plate-750c64fd-9a10-45dc-885c-f089ac3a2258"
             >
               <span
                 class="plateLabelWeight"
               >
                 55
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -200,6 +205,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-750c64fd-9a10-45dc-885c-f089ac3a2258"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -265,12 +271,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-1bf5065e-ee44-4cb2-bf1b-321d0651e9f2"
+              id="label-plate-1bf5065e-ee44-4cb2-bf1b-321d0651e9f2"
             >
               <span
                 class="plateLabelWeight"
               >
                 45
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -309,6 +317,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-1bf5065e-ee44-4cb2-bf1b-321d0651e9f2"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -373,12 +382,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-9de6b80f-6c8a-458d-ba1a-4e7c126424ed"
+              id="label-plate-9de6b80f-6c8a-458d-ba1a-4e7c126424ed"
             >
               <span
                 class="plateLabelWeight"
               >
                 35
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -417,6 +428,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-9de6b80f-6c8a-458d-ba1a-4e7c126424ed"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -482,12 +494,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-46bc30ec-b357-4c60-9ebb-3ff5bda4f36c"
+              id="label-plate-46bc30ec-b357-4c60-9ebb-3ff5bda4f36c"
             >
               <span
                 class="plateLabelWeight"
               >
                 25
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -526,6 +540,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-46bc30ec-b357-4c60-9ebb-3ff5bda4f36c"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -590,12 +605,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-29e9209e-c953-4680-b88d-d39f1a57763c"
+              id="label-plate-29e9209e-c953-4680-b88d-d39f1a57763c"
             >
               <span
                 class="plateLabelWeight"
               >
                 15
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -634,6 +651,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-29e9209e-c953-4680-b88d-d39f1a57763c"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -699,12 +717,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-028c096b-a080-4934-bf94-8b02e042beb6"
+              id="label-plate-028c096b-a080-4934-bf94-8b02e042beb6"
             >
               <span
                 class="plateLabelWeight"
               >
                 10
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -743,6 +763,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-028c096b-a080-4934-bf94-8b02e042beb6"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -808,12 +829,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-3787dc6c-3b4f-4052-bf45-22e70ecfbe21"
+              id="label-plate-3787dc6c-3b4f-4052-bf45-22e70ecfbe21"
             >
               <span
                 class="plateLabelWeight"
               >
                 5
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -852,6 +875,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-3787dc6c-3b4f-4052-bf45-22e70ecfbe21"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -917,12 +941,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-7caf0566-5245-428e-b220-ab4c0d852159"
+              id="label-plate-7caf0566-5245-428e-b220-ab4c0d852159"
             >
               <span
                 class="plateLabelWeight"
               >
                 2.5
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -961,6 +987,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-7caf0566-5245-428e-b220-ab4c0d852159"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -1025,12 +1052,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
             <label
               class="plateLabel"
               for="plate-773e8524-09ee-46cc-a2ed-411b2fa27803"
+              id="label-plate-773e8524-09ee-46cc-a2ed-411b2fa27803"
             >
               <span
                 class="plateLabelWeight"
               >
                 1.25
               </span>
+               
               <span
                 class="plateLabelUnits"
               >
@@ -1069,6 +1098,7 @@ exports[`EquipmentPanel should render correctly 1`] = `
                       >
                         <input
                           aria-autocomplete="list"
+                          aria-labelledby="label-plate-773e8524-09ee-46cc-a2ed-411b2fa27803"
                           autocapitalize="none"
                           autocomplete="off"
                           autocorrect="off"
@@ -1115,6 +1145,8 @@ exports[`EquipmentPanel should render correctly 1`] = `
           </div>
         </div>
         <button
+          class="button"
+          id="add-plates-btn"
           type="button"
         >
           Add
@@ -1126,11 +1158,11 @@ exports[`EquipmentPanel should render correctly 1`] = `
         <header
           class="header"
         >
-          <h3
+          <h2
             class="sectionTitle"
           >
             Barbells
-          </h3>
+          </h2>
         </header>
         <div
           class="barbellOptions"
@@ -1167,8 +1199,17 @@ exports[`EquipmentPanel should render correctly 1`] = `
               >
                 84
                  inches / 
-                45
-                 lb
+                <span
+                  class=""
+                >
+                  45
+                </span>
+                 
+                <span
+                  class=""
+                >
+                  lb
+                </span>
               </span>
             </label>
           </div>
@@ -1203,8 +1244,17 @@ exports[`EquipmentPanel should render correctly 1`] = `
               >
                 72
                  inches / 
-                33
-                 lb
+                <span
+                  class=""
+                >
+                  33
+                </span>
+                 
+                <span
+                  class=""
+                >
+                  lb
+                </span>
               </span>
             </label>
           </div>
@@ -1239,13 +1289,24 @@ exports[`EquipmentPanel should render correctly 1`] = `
               >
                 48
                  inches / 
-                17
-                 lb
+                <span
+                  class=""
+                >
+                  17
+                </span>
+                 
+                <span
+                  class=""
+                >
+                  lb
+                </span>
               </span>
             </label>
           </div>
         </div>
         <button
+          class="button"
+          id="add-barbell-btn"
           type="button"
         >
           Add
