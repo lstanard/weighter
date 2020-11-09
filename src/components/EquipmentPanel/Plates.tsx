@@ -4,6 +4,7 @@ import Select, { ValueType, StylesConfig } from "react-select";
 import { Plate } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
+import Button from "../Button";
 
 import styles from "./Plates.module.scss";
 
@@ -147,9 +148,11 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
         <h2 className={styles.sectionTitle}>Weight Plates</h2>
       </header>
       <div className={styles.plateOptions}>{plateOptions}</div>
-      <button type="button" onClick={() => console.log("add plates")}>
-        Add
-      </button>
+      <Button
+        id="add-plates-btn"
+        label="Add"
+        onClick={(): void => console.log("add plates")}
+      />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Barbell } from "../../types";
 
 import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
+import Button from "../Button";
 
 import styles from "./Barbells.module.scss";
 
@@ -53,9 +54,11 @@ const Barbells = ({
         <h2 className={styles.sectionTitle}>Barbells</h2>
       </header>
       <div className={styles.barbellOptions}>{barbellOptions}</div>
-      <button type="button" onClick={() => console.log("add barbell")}>
-        Add
-      </button>
+      <Button
+        id="add-barbell-btn"
+        label="Add"
+        onClick={(): void => console.log("add barbell")}
+      />
     </div>
   );
 };

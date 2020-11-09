@@ -13,6 +13,7 @@
     display: inline-block;
     height: 20px;
     margin: -1px 0px 0 0;
+    opacity: 0.6;
     position: relative;
     top: -1px;
     transition: all 0.2s;
@@ -23,6 +24,7 @@
   input[type="checkbox"]:checked + .checkbox {
     background-color: $blue;
     border-color: $blue;
+    opacity: 1;
 
     &::before {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11.876' height='11.156' viewBox='0 0 11.876 11.156'%3E%3Cpath id='Path_1' data-name='Path 1' d='M71.874,227.147l4.077,3.425,6.334-9.115' transform='translate(-71.231 -220.886)' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E%0A");

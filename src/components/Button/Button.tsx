@@ -4,7 +4,7 @@ import styles from "./Button.module.scss";
 
 export interface ButtonProps {
   id: string;
-  onClick: (event: MouseEvent) => null;
+  onClick: (event: MouseEvent) => void;
   label: string;
 }
 
@@ -13,7 +13,7 @@ const Button = ({ id, onClick, label }: ButtonProps): ReactElement => {
     <button
       id={id}
       type="button"
-      onClick={(event: MouseEvent): null => onClick(event)}
+      onClick={(event: MouseEvent): void => onClick(event)}
       className={styles.button}
     >
       {label}
