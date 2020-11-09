@@ -5,10 +5,7 @@ import { Plate } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
-import {
-  useGlobalUnitsContext,
-  GlobalUnitsContext,
-} from "../useGlobalUnitsContext";
+import DisplayWeight from "../DisplayWeight";
 
 import styles from "./Plates.module.scss";
 
@@ -67,8 +64,6 @@ export interface PlatesProps
   extends Pick<EquipmentPanelProps, "plates" | "updatePlates"> {}
 
 const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
-  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
-
   const handlePlateSelection = (plate: Plate): void => {
     updatePlates(
       plates.map((p: Plate) => {
@@ -125,8 +120,11 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           htmlFor={plateKey}
           className={styles.plateLabel}
         >
-          <span className={styles.plateLabelWeight}>{plate.weight}</span>
-          <span className={styles.plateLabelUnits}>{units}</span>
+          <DisplayWeight
+            weight={plate.weight}
+            weightClassName={styles.plateLabelWeight}
+            unitsClassName={styles.plateLabelUnits}
+          />
         </label>
         <span className={styles.plateQty}>
           <span className={styles.plateQtyTimes}>x</span>

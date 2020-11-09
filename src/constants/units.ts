@@ -1,2 +1,2 @@
-export const LB = 'lb';
-export const KG = 'kg';
+export const LB = "lb";
+export const KG = "kg";

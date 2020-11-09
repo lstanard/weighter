@@ -4,10 +4,7 @@ import { Barbell } from "../../types";
 import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
-import {
-  useGlobalUnitsContext,
-  GlobalUnitsContext,
-} from "../useGlobalUnitsContext";
+import DisplayWeight from "../DisplayWeight";
 
 import styles from "./Barbells.module.scss";
 
@@ -18,8 +15,6 @@ const Barbells = ({
   barbells,
   updateBarbells,
 }: BarbellsProps): ReactElement => {
-  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
-
   const handleBarbellSelection = (barbell: Barbell): void => {
     updateBarbells(
       barbells.map((b: Barbell) => {
@@ -47,7 +42,7 @@ const Barbells = ({
         <label htmlFor={barbellKey} className={styles.barbellLabel}>
           <span className={styles.barbellName}>{barbell.name}</span>
           <span className={styles.barbellDesc}>
-            {barbell.length} inches / {barbell.weight} {units}
+            {barbell.length} inches / <DisplayWeight weight={barbell.weight} />
           </span>
         </label>
       </div>

@@ -7,11 +7,10 @@ import React, {
   SetStateAction,
 } from "react";
 
-import { LB, KG } from "../constants/units";
+import { UnitTypes } from "../types";
+import { LB } from "../constants/units";
 
 const defaultUnits = LB;
-
-export type UnitTypes = typeof LB | typeof KG;
 
 export interface GlobalUnitsContext {
   units: UnitTypes;

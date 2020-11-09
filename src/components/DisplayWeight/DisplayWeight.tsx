@@ -1,12 +1,35 @@
-/**
- * Make a component to display either pounds or kgs,
- * depending on setting (from context?)
- */
-
 import React, { ReactElement } from "react";
+import cn from "classnames";
 
-function DisplayWeight(): ReactElement {
-  return <div>45 lb</div>;
+import {
+  useGlobalUnitsContext,
+  GlobalUnitsContext,
+} from "../useGlobalUnitsContext";
+import { LB } from "../../constants/units";
+import { getKilograms } from "../../utils";
+
+export interface DisplayWeightProps {
+  weight: number;
+  displayUnits?: boolean;
+  weightClassName?: string;
+  unitsClassName?: string;
+}
+
+function DisplayWeight({
+  weight,
+  displayUnits = true,
+  weightClassName,
+  unitsClassName,
+}: DisplayWeightProps): ReactElement {
+  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
+  const displayWeight = units === LB ? weight : getKilograms(weight);
+
+  return (
+    <>
+      <span className={cn(weightClassName)}>{displayWeight}</span>{" "}
+      {displayUnits && <span className={cn(unitsClassName)}>{units}</span>}
+    </>
+  );
 }
 
 export default DisplayWeight;

@@ -1,3 +1,7 @@
+import { LB, KG } from "./constants/units";
+
+export type UnitTypes = typeof LB | typeof KG;
+
 /**
  * Single Plate entity
  */
@@ -11,6 +15,13 @@ export interface Plate {
    * The weight of the plate in pounds.
    */
   weight: number;
+
+  /**
+   * Units (pounds or kilograms) the weight was originally provided in.
+   * Allows for entering units in a preferred format rather than relying
+   * entirely on conversion, which is less precise.
+   */
+  weightUnits: UnitTypes;
 
   /**
    * The number of plates available.

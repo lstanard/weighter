@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from "react";
 
-import { GlobalUnitsContextProvider } from './useGlobalUnitsContext';
+import { GlobalUnitsContextProvider } from "./useGlobalUnitsContext";
 import EquipmentPanel from "./EquipmentPanel/EquipmentPanel";
 import Results from "./Results";
 import { Plate, Barbell } from "../types";
