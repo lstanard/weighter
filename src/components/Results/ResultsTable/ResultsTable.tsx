@@ -7,6 +7,10 @@ import {
   getPlatesTotalWeight,
   getResultId,
 } from "../../../utils";
+import {
+  useGlobalUnitsContext,
+  GlobalUnitsContext,
+} from "../../useGlobalUnitsContext";
 
 import styles from "./ResultsTable.module.scss";
 
@@ -78,6 +82,8 @@ const ResultsTable = ({
   searchValue,
   searchVariance,
 }: ResultsTableProps): ReactElement => {
+  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
+
   /**
    * Creates a result set based on all of the available, selected
    * barbells and plates.
@@ -164,7 +170,9 @@ const ResultsTable = ({
         ))}
       </td>
       <td className={styles.tableColBarbell}>{result.barbell.name}</td>
-      <td className={styles.tableColTotal}>{result.totalWeight} lb</td>
+      <td className={styles.tableColTotal}>
+        {result.totalWeight} {units}
+      </td>
     </tr>
   ));
 

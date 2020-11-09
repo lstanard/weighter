@@ -1,6 +1,11 @@
 import React, { ChangeEvent, ReactElement } from "react";
 import Select, { ValueType, StylesConfig } from "react-select";
 
+import {
+  useGlobalUnitsContext,
+  GlobalUnitsContext,
+} from "../useGlobalUnitsContext";
+
 import styles from "./Find.module.scss";
 
 const SEARCH_VARIANCE_OPTIONS = [
@@ -47,6 +52,8 @@ const Find = ({
   onSearchChange,
   onSearchVarianceChange,
 }: FindProps): ReactElement => {
+  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
+
   return (
     <div className={styles.find}>
       <span className={styles.findInput}>
@@ -69,7 +76,7 @@ const Find = ({
           onSearchVarianceChange(value);
         }}
       />
-      <span className={styles.units}>lb</span>
+      <span className={styles.units}>{units}</span>
     </div>
   );
 };
