@@ -85,7 +85,7 @@ const ResultsTable = ({
    * barbells and plates.
    */
   const combinations = useMemo(() => {
-    let results: Result[] = [];
+    const results: Result[] = [];
 
     // Loop over all of the barbells, skipping those that aren't selected.
     barbells.forEach((barbell) => {
@@ -130,11 +130,31 @@ const ResultsTable = ({
       });
     });
 
-    // TODO: will want to move this, both for performance and better code organization
-    // NOTE: THIS WORKS BUT IS SLOW AS HELL!!! probably due to other calculations happening
+    return results;
+  }, [barbells, plates]);
+
+  /**
+   * Sort results
+   */
+  const sortedResults = useMemo(() => {
+    return combinations.sort((a, b) => {
+      return a.totalWeight - b.totalWeight;
+    });
+  }, [combinations]);
+
+  /**
+   * Apply any specified search parameters to the sorted results
+   */
+  const finalResults = useMemo(() => {
+    let filteredSearchResults: Result[] = [];
+
+    if (!sortedResults.length) {
+      return null;
+    }
+
     if (searchValue) {
       const searchPattern = new RegExp(`^${searchValue}`, "i");
-      results = results.filter((result) => {
+      filteredSearchResults = sortedResults.filter((result) => {
         if (searchVariance) {
           for (
             let i = searchValue - searchVariance;
@@ -150,18 +170,18 @@ const ResultsTable = ({
         }
         return false;
       });
+    } else {
+      return sortedResults;
     }
 
-    return results;
-  }, [barbells, searchValue, plates, searchVariance]);
+    if (filteredSearchResults.length) {
+      return filteredSearchResults;
+    }
 
-  const sortedResults = useMemo(() => {
-    return combinations.sort((a, b) => {
-      return a.totalWeight - b.totalWeight;
-    });
-  }, [combinations]);
+    return null;
+  }, [searchValue, searchVariance, sortedResults]);
 
-  const tableRows = sortedResults.map((result) => (
+  const tableRows = finalResults?.map((result) => (
     <tr id={result.id} key={result.id} tabIndex={0}>
       <td className={styles.tableColPlates}>
         {result.plates.map((plate) => (
