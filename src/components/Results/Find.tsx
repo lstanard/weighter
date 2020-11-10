@@ -3,7 +3,7 @@ import Select, { ValueType, StylesConfig } from "react-select";
 
 import {
   useGlobalUnitsContext,
-  GlobalUnitsContext,
+  GlobalUnitsContextValues,
 } from "../useGlobalUnitsContext";
 
 import styles from "./Find.module.scss";
@@ -52,7 +52,7 @@ const Find = ({
   onSearchChange,
   onSearchVarianceChange,
 }: FindProps): ReactElement => {
-  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
+  const { units }: GlobalUnitsContextValues = useGlobalUnitsContext();
 
   return (
     <div className={styles.find}>

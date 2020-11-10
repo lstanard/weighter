@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ReactElement, useCallback } from "react";
 import Select, { ValueType, StylesConfig } from "react-select";
 

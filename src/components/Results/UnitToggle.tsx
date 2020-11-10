@@ -4,13 +4,13 @@ import cn from "classnames";
 import { LB, KG } from "../../constants/units";
 import {
   useGlobalUnitsContext,
-  GlobalUnitsContext,
+  GlobalUnitsContextValues,
 } from "../useGlobalUnitsContext";
 
 import styles from "./UnitToggle.module.scss";
 
 const UnitToggle = (): ReactElement => {
-  const { units, setUnits }: GlobalUnitsContext = useGlobalUnitsContext();
+  const { units, setUnits }: GlobalUnitsContextValues = useGlobalUnitsContext();
 
   return (
     <div className={styles.container}>

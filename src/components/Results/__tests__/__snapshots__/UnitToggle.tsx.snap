@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UnitToggle should correctly toggle selection 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <button
+      class="selected"
+      type="button"
+    >
+      Pounds
+    </button>
+    <button
+      class=""
+      type="button"
+    >
+      Kilograms
+    </button>
+  </div>
+</div>
+`;
+
+exports[`UnitToggle should render correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <button
+      class="selected"
+      type="button"
+    >
+      Pounds
+    </button>
+    <button
+      class=""
+      type="button"
+    >
+      Kilograms
+    </button>
+  </div>
+</div>
+`;

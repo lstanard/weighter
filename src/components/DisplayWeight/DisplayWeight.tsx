@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import {
   useGlobalUnitsContext,
-  GlobalUnitsContext,
+  GlobalUnitsContextValues,
 } from "../useGlobalUnitsContext";
 import { LB } from "../../constants/units";
 import { getKilograms } from "../../utils";
@@ -21,7 +21,7 @@ function DisplayWeight({
   weightClassName,
   unitsClassName,
 }: DisplayWeightProps): ReactElement {
-  const { units }: GlobalUnitsContext = useGlobalUnitsContext();
+  const { units }: GlobalUnitsContextValues = useGlobalUnitsContext();
   const displayWeight = units === LB ? weight : getKilograms(weight);
 
   return (

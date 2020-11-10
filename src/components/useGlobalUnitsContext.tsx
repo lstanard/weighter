@@ -12,12 +12,12 @@ import { LB } from "../constants/units";
 
 const defaultUnits = LB;
 
-export interface GlobalUnitsContext {
+export interface GlobalUnitsContextValues {
   units: UnitTypes;
   setUnits: Dispatch<SetStateAction<UnitTypes>>;
 }
 
-export const GlobalUnitsContext = createContext<GlobalUnitsContext>({
+export const GlobalUnitsContext = createContext<GlobalUnitsContextValues>({
   units: defaultUnits,
   setUnits: () => null,
 });
@@ -30,7 +30,7 @@ export const GlobalUnitsContextProvider = ({
   children,
 }: GlobalUnitsContextProviderProps): ReactElement => {
   const [units, setUnits] = useState<UnitTypes>(defaultUnits);
-  const contextValue: GlobalUnitsContext = {
+  const contextValue: GlobalUnitsContextValues = {
     units,
     setUnits,
   };
@@ -42,6 +42,6 @@ export const GlobalUnitsContextProvider = ({
   );
 };
 
-export const useGlobalUnitsContext = (): GlobalUnitsContext => {
+export const useGlobalUnitsContext = (): GlobalUnitsContextValues => {
   return useContext(GlobalUnitsContext);
 };
