@@ -131,15 +131,25 @@ const ResultsTable = ({
     });
 
     // TODO: will want to move this, both for performance and better code organization
+    // NOTE: THIS WORKS BUT IS SLOW AS HELL!!! probably due to other calculations happening
     if (searchValue) {
-      if (searchVariance) {
-        // console.log("searchRange", searchRange);
-      }
-
       const searchPattern = new RegExp(`^${searchValue}`, "i");
-      results = results.filter((result) =>
-        searchPattern.test(result.totalWeight.toString())
-      );
+      results = results.filter((result) => {
+        if (searchVariance) {
+          for (
+            let i = searchValue - searchVariance;
+            i <= Number(searchValue) + Number(searchVariance);
+            i += 1
+          ) {
+            if (i === result.totalWeight) {
+              return true;
+            }
+          }
+        } else if (searchPattern.test(result.totalWeight.toString())) {
+          return true;
+        }
+        return false;
+      });
     }
 
     // TODO: will want to move this sorting as well
