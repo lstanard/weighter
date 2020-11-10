@@ -152,15 +152,16 @@ const ResultsTable = ({
       });
     }
 
-    // TODO: will want to move this sorting as well
-    results.sort((a, b) => {
-      return a.totalWeight - b.totalWeight;
-    });
-
     return results;
   }, [barbells, searchValue, plates, searchVariance]);
 
-  const tableRows = combinations.map((result) => (
+  const sortedResults = useMemo(() => {
+    return combinations.sort((a, b) => {
+      return a.totalWeight - b.totalWeight;
+    });
+  }, [combinations]);
+
+  const tableRows = sortedResults.map((result) => (
     <tr id={result.id} key={result.id} tabIndex={0}>
       <td className={styles.tableColPlates}>
         {result.plates.map((plate) => (
@@ -190,7 +191,13 @@ const ResultsTable = ({
           <tbody>{tableRows}</tbody>
         </table>
       ) : (
-        <p>No results</p>
+        <div className={styles.noResults}>
+          <h3>No results</h3>
+          <p>
+            Make sure you&apos;ve selected some equipment from the menu on the
+            left.
+          </p>
+        </div>
       )}
     </div>
   );
