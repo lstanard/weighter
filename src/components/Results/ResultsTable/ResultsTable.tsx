@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
-import React, { ReactElement, useMemo } from "react";
+import React, { ReactElement, useMemo, useState } from "react";
 
-import { Plates, Barbell, Barbells } from "../../../types";
+import { Plates, Barbell, Barbells, TableSort } from "../../../types";
 import {
   getPlateCombinations,
   getPlatesTotalWeight,
@@ -11,6 +11,7 @@ import DisplayWeight from "../../DisplayWeight";
 import ResultsTableHeader from "./ResultsTableHeader";
 
 import styles from "./ResultsTable.module.scss";
+import { ASC, TOTAL_WEIGHT } from "../../../constants/sort";
 
 export interface ResultPlate {
   quantity: number;
@@ -80,6 +81,12 @@ const ResultsTable = ({
   searchValue,
   searchVariance,
 }: ResultsTableProps): ReactElement => {
+  const defaultSortOptions: TableSort = {
+    sortColumn: TOTAL_WEIGHT,
+    sortOrder: ASC,
+  };
+  const [sortOptions, setSortOptions] = useState<TableSort>(defaultSortOptions);
+
   /**
    * Creates a result set based on all of the available, selected
    * barbells and plates.
@@ -135,12 +142,19 @@ const ResultsTable = ({
 
   /**
    * Sort results
+   *
+   * NOTE: Large -> Small = Descending order
+   *       Small -> Large = Ascending order
    */
   const sortedResults = useMemo(() => {
     return combinations.sort((a, b) => {
-      return a.totalWeight - b.totalWeight;
+      if (sortOptions.sortOrder === ASC) {
+        return a.totalWeight - b.totalWeight;
+      }
+
+      return b.totalWeight - a.totalWeight;
     });
-  }, [combinations]);
+  }, [combinations, sortOptions.sortOrder]);
 
   /**
    * Apply any specified search parameters to the sorted results
@@ -148,10 +162,9 @@ const ResultsTable = ({
   const finalResults = useMemo(() => {
     let filteredSearchResults: Result[] = [];
 
-    if (!sortedResults.length) {
-      return null;
-    }
-
+    /**
+     * TODO: This search doesn't work for in-between values, like 70.5
+     */
     if (searchValue) {
       const searchPattern = new RegExp(`^${searchValue}`, "i");
       filteredSearchResults = sortedResults.filter((result) => {
@@ -198,16 +211,22 @@ const ResultsTable = ({
       </td>
       <td className={styles.tableColBarbell}>{result.barbell.name}</td>
       <td className={styles.tableColTotal}>
-        <DisplayWeight weight={result.totalWeight} />
+        <DisplayWeight
+          weight={result.totalWeight}
+          weightClassName={styles.totalWeightAmt}
+        />
       </td>
     </tr>
   ));
 
   return (
     <div className={styles.container}>
-      {combinations.length ? (
+      {finalResults?.length ? (
         <table>
-          <ResultsTableHeader />
+          <ResultsTableHeader
+            sortOptions={sortOptions}
+            setSortOptions={setSortOptions}
+          />
           <tbody>{tableRows}</tbody>
         </table>
       ) : (

@@ -26,12 +26,11 @@
 
     td,
     th {
-      padding: 10px 8px 10px 0;
       vertical-align: middle;
     }
 
     th {
-      padding-bottom: 8px;
+      padding: $results-table-header-padding;
       white-space: nowrap;
     }
 
@@ -39,6 +38,14 @@
       border-bottom: 1px solid $concrete;
       color: $chocolate;
       font-size: 20px;
+      padding: 10px 8px 10px 0;
+    }
+
+    tr:focus,
+    tr:active {
+      td {
+        color: $green;
+      }
     }
 
     tr:last-child td {
@@ -66,9 +73,7 @@
   .tableHeaderColPlates,
   .tableHeaderColBarbell,
   .tableHeaderColTotal {
-    color: $night-blue;
-    font-size: 16px;
-    text-transform: uppercase;
+    @include table-header-cell-text();
   }
 }
 
@@ -88,6 +93,10 @@
   font-size: 12px;
   margin-right: 2px;
   opacity: 0.6;
+}
+
+.totalWeightAmt {
+  font-weight: 500;
 }
 
 .noResults {

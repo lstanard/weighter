@@ -1,5 +1,18 @@
 import { LB, KG } from "./constants/units";
+import { ASC, DESC, TOTAL_WEIGHT } from "./constants/sort";
 
+/**
+ * Object for defining current sorting options for the results table.
+ * Currently can only sort by total combined weight.
+ */
+export interface TableSort {
+  sortColumn: typeof TOTAL_WEIGHT;
+  sortOrder: typeof ASC | typeof DESC;
+}
+
+/**
+ * Possible units of measure
+ */
 export type UnitTypes = typeof LB | typeof KG;
 
 /**

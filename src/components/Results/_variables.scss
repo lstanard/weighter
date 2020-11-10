@@ -1,1 +1,9 @@
 $results-header-height: 90px;
+$results-table-header-padding: 8px;
+
+@mixin table-header-cell-text {
+  color: $night-blue;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
