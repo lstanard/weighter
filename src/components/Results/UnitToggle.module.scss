@@ -1,1 +1,19 @@
 @import "../../scss/globals";
+
+.container {
+  background: $snow;
+  border-radius: $border-radius;
+
+  button {
+    color: $chocolate;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+    padding: 10px;
+  }
+
+  .selected {
+    background: $night-blue;
+    color: $snow;
+    opacity: 1;
+  }
+}
