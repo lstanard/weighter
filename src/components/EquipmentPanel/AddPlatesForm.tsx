@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 
 import Button, { BTN_THEME_SECONDARY } from "../Button";
-import styles from "./AddPlates.module.scss";
+import styles from "./AddPlatesForm.module.scss";
 
 export interface AddPlatesFormProps {
   visible: boolean;
