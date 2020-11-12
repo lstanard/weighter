@@ -11,6 +11,18 @@
   text-transform: uppercase;
 }
 
+// @reference https://www.w3.org/WAI/tutorials/forms/labels/#note-on-hiding-elements
+@mixin visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 // Button reset
 button {
   appearance: none;
@@ -22,4 +34,14 @@ button {
   &:hover {
     cursor: pointer;
   }
+}
+
+// Input reset
+input[type="text"] {
+  appearance: none;
+  background: $snow;
+  border: 0;
+  border-radius: 6px;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
 }
