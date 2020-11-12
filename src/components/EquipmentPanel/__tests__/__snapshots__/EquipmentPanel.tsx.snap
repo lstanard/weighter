@@ -35,13 +35,14 @@ exports[`EquipmentPanel should render correctly 1`] = `
           class="plateRow"
         >
           <div
-            aria-checked="false"
+            aria-checked="true"
             class="container plateSelect"
             id="checkbox-plate-773e8524-09ee-46cc-a2ed-411b2fa27803"
             role="checkbox"
             tabindex="0"
           >
             <input
+              checked=""
               type="checkbox"
             />
             <span
@@ -84,9 +85,9 @@ exports[`EquipmentPanel should render correctly 1`] = `
                   class=" css-86rg1c-ValueContainer"
                 >
                   <div
-                    class=" css-1r23seu-placeholder"
+                    class=" css-1opnhvy-singleValue"
                   >
-                    Qty.
+                    2
                   </div>
                   <div
                     class="css-b8ldur-Input"

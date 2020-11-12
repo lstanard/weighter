@@ -3,7 +3,8 @@
 .container {
   background-color: $night-blue;
   padding: #{$std-padding / 2} $std-padding;
-  max-height: 100vh;
+  height: auto;
+  min-height: 100vh;
   max-width: $sidebar-max-width;
   min-width: $sidebar-min-width;
 

@@ -104,7 +104,7 @@ const ResultsTable = ({
       // we want to be able to double everything, accounting for both sides of
       // the barbell. e.g., 3x10, 4x5, 2x45 = [45, 10, 5, 5]
       plates
-        .filter((plate) => plate.selected)
+        .filter((plate) => plate.selected && plate.weight !== 0)
         .forEach((plate) => {
           const pairs = plate.quantity ? Math.floor(plate.quantity / 2) : 1;
           for (let i = 0; i < pairs; i += 1) {
@@ -141,9 +141,6 @@ const ResultsTable = ({
 
   /**
    * Sort results
-   *
-   * NOTE: Large -> Small = Descending order
-   *       Small -> Large = Ascending order
    */
   const sortedResults = useMemo(() => {
     return combinations.sort((a, b) => {
@@ -161,21 +158,17 @@ const ResultsTable = ({
   const finalResults = useMemo(() => {
     let filteredSearchResults: Result[] = [];
 
-    /**
-     * TODO: This search doesn't work for in-between values, like 70.5
-     */
     if (searchValue) {
       const searchPattern = new RegExp(`^${searchValue}`, "i");
       filteredSearchResults = sortedResults.filter((result) => {
         if (searchVariance) {
-          for (
-            let i = searchValue - searchVariance;
-            i <= Number(searchValue) + Number(searchVariance);
-            i += 1
+          const max: number = Number(searchValue) + Number(searchVariance);
+          const min: number = Number(searchValue) - Number(searchVariance);
+          if (
+            result.totalWeight === searchValue ||
+            (result.totalWeight >= min && result.totalWeight <= max)
           ) {
-            if (i === result.totalWeight) {
-              return true;
-            }
+            return true;
           }
         } else if (searchPattern.test(result.totalWeight.toString())) {
           return true;

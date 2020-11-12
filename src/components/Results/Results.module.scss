@@ -2,7 +2,8 @@
 @import "./variables";
 
 .container {
-  max-height: 100vh;
+  height: auto;
+  min-height: 100vh;
   padding: $std-padding #{$std-padding * 2};
   width: 100%;
 }

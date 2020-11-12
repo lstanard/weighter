@@ -146,7 +146,12 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
       "add-plate-qty"
     ) as HTMLInputElement;
 
-    // TODO: need to validate that either input isn't empty
+    const weight = addPlateWeight?.value;
+    const quantity = addPlateQty?.value;
+
+    if (!weight || !quantity) {
+      return;
+    }
 
     const newPlate: Plate = {
       id: uuidv4(),
@@ -161,23 +166,21 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     addPlateQty.value = "";
   };
 
-  const getDefaultSelectValue = useCallback(
-    (plateQty: number, selected: boolean) => {
-      const defaultValue = PLATE_QTY_OPTIONS.filter((option) => {
-        return option.value === plateQty;
-      })[0];
-      if (selected && defaultValue) {
-        return defaultValue;
-      }
-      return null;
-    },
-    []
-  );
+  const getSelectValue = useCallback((plateQty: number, selected: boolean) => {
+    const defaultValue = PLATE_QTY_OPTIONS.filter((option) => {
+      return option.value === plateQty;
+    })[0];
+    if (selected && defaultValue) {
+      return defaultValue;
+    }
+    return null;
+  }, []);
 
   /**
    * This should really be its own component.
    */
   const plateOptions = plates
+    .filter((plate) => plate.weight !== 0)
     .sort((a, b) => a.weight - b.weight)
     .map((plate) => {
       const plateKey = `plate-${plate.id}`;
@@ -213,10 +216,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
               options={PLATE_QTY_OPTIONS}
               className={styles.plateQtySelect}
               styles={customSelectStyles}
-              defaultValue={getDefaultSelectValue(
-                plate.quantity,
-                plate.selected
-              )}
+              value={getSelectValue(plate.quantity, plate.selected)}
               aria-labelledby={`label-${plateKey}`}
             />
           </span>

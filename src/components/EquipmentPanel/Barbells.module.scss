@@ -1,5 +1,9 @@
 @import "../../scss/globals";
 
+.container {
+  margin-bottom: $std-margin;
+}
+
 .sectionTitle {
   @include section-title;
 
