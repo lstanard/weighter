@@ -3,6 +3,7 @@ import React, { Dispatch, ReactElement, SetStateAction } from "react";
 import Plates from "./Plates";
 import Barbells from "./Barbells";
 import { Barbell, Plate } from "../../types";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 
 import styles from "./EquipmentPanel.module.scss";
 
@@ -22,7 +23,9 @@ const EquipmentPanel = ({
   return (
     <div className={styles.container}>
       <header className={styles.appHeader}>
-        <h1>weighter</h1>
+        <span className={styles.logo}>
+          <Logo />
+        </span>
       </header>
       <Plates plates={plates} updatePlates={updatePlates} />
       <Barbells barbells={barbells} updateBarbells={updateBarbells} />
