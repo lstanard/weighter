@@ -3,6 +3,7 @@
 $margin: 8px;
 
 .addPlatesForm {
+  align-items: center;
   display: flex;
   flex-direction: row;
   height: 0;
@@ -37,5 +38,26 @@ $margin: 8px;
     margin-right: $margin;
     text-align: center;
     width: 33%;
+  }
+}
+
+$add-btn-size: 20px;
+
+.addPlatesBtn {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid $green;
+  border-radius: 50%;
+  color: $green;
+  display: flex;
+  height: $add-btn-size;
+  justify-content: center;
+  margin-left: 9px;
+  transition: all $transition-duration;
+  width: $add-btn-size;
+
+  &:hover {
+    border-color: $snow;
+    color: $snow;
   }
 }

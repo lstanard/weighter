@@ -1,5 +1,7 @@
 import React, { Dispatch, ReactElement, SetStateAction } from "react";
 import cn from "classnames";
+import { SortAscending, SortDescending } from "phosphor-react";
+
 import { ASC, DESC, TOTAL_WEIGHT } from "../../../constants/sort";
 import { TableSort } from "../../../types";
 
@@ -40,6 +42,11 @@ const ResultsTableHeader = ({
             aria-label="Sort table by total weight"
           >
             Total Weight
+            {sortOptions.sortOrder === ASC ? (
+              <SortDescending size={24} className={styles.sortIcon} />
+            ) : (
+              <SortAscending size={24} className={styles.sortIcon} />
+            )}
           </button>
         </th>
       </tr>

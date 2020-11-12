@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ReactElement, useCallback, useState } from "react";
+import { Trash } from "phosphor-react";
 import cn from "classnames";
 import Select, { ValueType, StylesConfig } from "react-select";
 import { v4 as uuidv4 } from "uuid";
@@ -9,7 +10,6 @@ import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
 import DisplayWeight from "../DisplayWeight";
-import { ReactComponent as RemoveIcon } from "../../assets/icon-remove.svg";
 import styles from "./Plates.module.scss";
 import AddPlatesForm from "./AddPlatesForm";
 import {
@@ -146,6 +146,8 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
       "add-plate-qty"
     ) as HTMLInputElement;
 
+    // TODO: need to validate that either input isn't empty
+
     const newPlate: Plate = {
       id: uuidv4(),
       weight: Number(addPlateWeight?.value),
@@ -226,7 +228,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
               [styles.visible]: isEditing,
             })}
           >
-            <RemoveIcon />
+            <Trash size={20} />
           </button>
         </div>
       );

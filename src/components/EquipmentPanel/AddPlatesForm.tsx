@@ -1,7 +1,7 @@
 import React from "react";
+import { Plus } from "phosphor-react";
 import cn from "classnames";
 
-import Button, { BTN_THEME_SECONDARY } from "../Button";
 import styles from "./AddPlatesForm.module.scss";
 
 export interface AddPlatesFormProps {
@@ -20,14 +20,14 @@ const AddPlatesForm = ({ visible, handleAddPlate }: AddPlatesFormProps) => {
       <input type="text" id="add-plate-weight" placeholder="Weight" />
       <label htmlFor="add-plate-qty">Quantity</label>
       <input type="text" id="add-plate-qty" placeholder="Qty." />
-      <Button
+      <button
         id="add-plates-btn"
-        label="Add"
-        value="+"
+        aria-label="Add plates"
         onClick={(): void => handleAddPlate()}
-        theme={BTN_THEME_SECONDARY}
         className={styles.addPlatesBtn}
-      />
+      >
+        <Plus size={16} />
+      </button>
     </div>
   );
 };

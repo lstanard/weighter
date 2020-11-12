@@ -8,24 +8,13 @@
 .sortHeaderBtn {
   @include table-header-cell-text();
 
+  align-items: center;
+  display: flex;
+  margin-bottom: 1px;
   padding: $results-table-header-padding;
   position: relative;
-
-  &::after {
-    content: ">";
-    color: $night-blue;
-    display: none;
-    position: absolute;
-    top: 7px;
-    transform: rotate(-90deg);
-    transition: all 0.25s;
-    right: -8px;
-  }
 }
 
-.sortHeaderBtnDesc {
-  &::after {
-    content: "<";
-    transform: rotate(90deg);
-  }
+.sortIcon {
+  margin-left: 5px;
 }

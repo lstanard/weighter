@@ -8,9 +8,13 @@ exports[`EquipmentPanel should render correctly 1`] = `
     <header
       class="appHeader"
     >
-      <h1>
-        weighter
-      </h1>
+      <span
+        class="logo"
+      >
+        <svg>
+          logo.svg
+        </svg>
+      </span>
     </header>
     <div
       class="container"
@@ -142,8 +146,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -263,8 +326,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -384,8 +506,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -505,8 +686,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -625,8 +865,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -746,8 +1045,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -866,8 +1224,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -987,8 +1404,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -1107,8 +1583,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -1227,8 +1762,67 @@ exports[`EquipmentPanel should render correctly 1`] = `
             class="plateRemoveBtn"
             type="button"
           >
-            <svg>
-              icon-remove.svg
+            <svg
+              fill="currentColor"
+              height="20"
+              viewBox="0 0 256 256"
+              width="20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="215.99609"
+                x2="39.99609"
+                y1="56"
+                y2="56.00005"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="104"
+                y1="104"
+                y2="168"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="152"
+                x2="152"
+                y1="104"
+                y2="168"
+              />
+              <path
+                d="M199.99609,56.00005V208a8,8,0,0,1-8,8h-128a8,8,0,0,1-8-8v-152"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <path
+                d="M168,56V40a16,16,0,0,0-16-16H104A16,16,0,0,0,88,40V56"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
             </svg>
           </button>
         </div>
@@ -1257,12 +1851,45 @@ exports[`EquipmentPanel should render correctly 1`] = `
           type="text"
         />
         <button
-          aria-label="Add"
-          class="button secondary addPlatesBtn"
+          aria-label="Add plates"
+          class="addPlatesBtn"
           id="add-plates-btn"
-          type="button"
         >
-          +
+          <svg
+            fill="currentColor"
+            height="16"
+            viewBox="0 0 256 256"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              fill="none"
+              height="256"
+              width="256"
+            />
+            <line
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+              x1="40"
+              x2="216"
+              y1="128"
+              y2="128"
+            />
+            <line
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+              x1="128"
+              x2="128"
+              y1="40"
+              y2="216"
+            />
+          </svg>
         </button>
       </div>
       <button

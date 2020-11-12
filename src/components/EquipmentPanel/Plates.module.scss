@@ -71,6 +71,7 @@
 }
 
 .plateRemoveBtn {
+  color: $red;
   height: 20px;
   opacity: 0;
   transition: all $transition-duration;
