@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
 import React, { ReactElement, useMemo, useState } from "react";
 
-import { Plates, Barbell, Barbells, TableSort } from "../../../types";
+import { Plate, Plates, Barbell, Barbells, TableSort } from "../../../types";
 import {
   getPlateCombinations,
   getPlatesTotalWeight,
@@ -13,10 +13,7 @@ import ResultsTableHeader from "./ResultsTableHeader";
 import styles from "./ResultsTable.module.scss";
 import { ASC, TOTAL_WEIGHT } from "../../../constants/sort";
 
-export interface ResultPlate {
-  quantity: number;
-  weight: number;
-}
+export interface ResultPlate extends Pick<Plate, "weight" | "quantity"> {}
 
 export interface ResultPlates {
   [key: string]: ResultPlate;
@@ -125,6 +122,8 @@ const ResultsTable = ({
       }
 
       // Create each final Result and push to the results array
+      // TODO: need to normalize the weights so there isn't both lbs and kgs
+      // being used when creating the totalWeight.
       plateCombinations.forEach((combination) => {
         const totalWeight = getPlatesTotalWeight(combination) + barbell.weight;
         const result = {

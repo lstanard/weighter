@@ -44,6 +44,9 @@ function Results({ plates, barbells }: ResultsProps): ReactElement {
         searchValue={searchValue}
         searchVariance={searchVariance}
       />
+      <footer>
+        {/* Want to add some kind of footer, credits, whatever */}
+      </footer>
     </div>
   );
 }

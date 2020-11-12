@@ -68,6 +68,13 @@ export interface Barbell {
   weight: number;
 
   /**
+   * Units (pounds or kilograms) the weight was originally provided in.
+   * Allows for entering units in a preferred format rather than relying
+   * entirely on conversion, which is less precise.
+   */
+  weightUnits: UnitTypes;
+
+  /**
    * Name for this barbell.
    */
   name: string;

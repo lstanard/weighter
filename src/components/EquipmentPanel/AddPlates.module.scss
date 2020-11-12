@@ -1,0 +1,41 @@
+@import "../../scss/globals";
+
+$margin: 8px;
+
+.addPlatesForm {
+  display: flex;
+  flex-direction: row;
+  height: 0;
+  justify-content: space-between;
+  margin: 0;
+  max-width: #{$sidebar-max-width - $std-padding * 2};
+  opacity: 0;
+  transition: all $transition-duration;
+  visibility: hidden;
+
+  &.visible {
+    height: 40px;
+    margin: #{$std-margin / 2} 0 $std-margin;
+    opacity: 1;
+    transition: all $transition-duration;
+    visibility: visible;
+  }
+
+  label {
+    @include visually-hidden();
+
+    flex: 1;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  input[type="text"] {
+    background-color: $dark-night-blue;
+    color: $snow;
+    flex: 1;
+    height: 40px;
+    margin-right: $margin;
+    text-align: center;
+    width: 33%;
+  }
+}

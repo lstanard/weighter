@@ -9,10 +9,13 @@ import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
 import DisplayWeight from "../DisplayWeight";
-import removeIcon from "../../assets/icon-remove.svg";
-
+import { ReactComponent as RemoveIcon } from "../../assets/icon-remove.svg";
 import styles from "./Plates.module.scss";
-import { KG, LB } from "../../constants/units";
+import AddPlatesForm from "./AddPlatesForm";
+import {
+  useGlobalUnitsContext,
+  GlobalUnitsContextValues,
+} from "../useGlobalUnitsContext";
 
 // NOTE: should make this dynamically generated
 const PLATE_QTY_OPTIONS = [
@@ -24,11 +27,6 @@ const PLATE_QTY_OPTIONS = [
   { value: 12, label: "12" },
   { value: 14, label: "14" },
   { value: 16, label: "16" },
-];
-
-const PLATE_UNITS_OPTIONS = [
-  { value: LB, label: LB },
-  { value: KG, label: KG },
 ];
 
 type OptionType = { label: string; value: number };
@@ -74,6 +72,7 @@ export interface PlatesProps
   extends Pick<EquipmentPanelProps, "plates" | "updatePlates"> {}
 
 const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
+  const { units }: GlobalUnitsContextValues = useGlobalUnitsContext();
   const [isEditing, setIsEditing] = useState(false);
 
   const handleCustomizePlates = useCallback(() => {
@@ -150,7 +149,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     const newPlate: Plate = {
       id: uuidv4(),
       weight: Number(addPlateWeight?.value),
-      weightUnits: LB,
+      weightUnits: units,
       quantity: Number(addPlateQty?.value),
       selected: true,
     };
@@ -159,24 +158,6 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     addPlateWeight.value = "";
     addPlateQty.value = "";
   };
-
-  /**
-   * This should really be its own component.
-   */
-  const addPlates = (
-    <div className={styles.addPlatesForm}>
-      <label>Weight</label>
-      <input type="text" id="add-plate-weight" />
-      <Select options={PLATE_UNITS_OPTIONS} />
-      <label>Quantity</label>
-      <input type="text" id="add-plate-qty" />
-      <Button
-        id="add-plates-btn"
-        label="Add"
-        onClick={(): void => handleAddPlate()}
-      />
-    </div>
-  );
 
   const getDefaultSelectValue = useCallback(
     (plateQty: number, selected: boolean) => {
@@ -213,6 +194,7 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
           >
             <DisplayWeight
               weight={plate.weight}
+              weightUnits={plate.weightUnits}
               weightClassName={styles.plateLabelWeight}
               unitsClassName={styles.plateLabelUnits}
             />
@@ -241,10 +223,10 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
             onClick={(): void => handleRemovePlate(plate)}
             aria-label="Remove"
             className={cn(styles.plateRemoveBtn, {
-              [styles.plateRemoveBtnVisible]: isEditing,
+              [styles.visible]: isEditing,
             })}
           >
-            <img src={removeIcon} alt="Remove" />
+            <RemoveIcon />
           </button>
         </div>
       );
@@ -254,9 +236,11 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     <div className={styles.container}>
       <header className={styles.header}>
         <h2 className={styles.sectionTitle}>Weight Plates</h2>
+        {/* Add toggle to be able to collapse sections 
+            (reusable collapsible section component) */}
       </header>
       <div className={styles.plateOptions}>{plateOptions}</div>
-      {isEditing && addPlates}
+      <AddPlatesForm visible={isEditing} handleAddPlate={handleAddPlate} />
       <Button
         id="customize-plates-btn"
         label={!isEditing ? "Customize" : "Done"}

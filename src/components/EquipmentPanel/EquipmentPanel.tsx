@@ -24,10 +24,8 @@ const EquipmentPanel = ({
       <header className={styles.appHeader}>
         <h1>weighter</h1>
       </header>
-      <form>
-        <Plates plates={plates} updatePlates={updatePlates} />
-        <Barbells barbells={barbells} updateBarbells={updateBarbells} />
-      </form>
+      <Plates plates={plates} updatePlates={updatePlates} />
+      <Barbells barbells={barbells} updateBarbells={updateBarbells} />
     </div>
   );
 };

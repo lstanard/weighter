@@ -1,7 +1,10 @@
+import { LB } from "../constants/units";
+
 export default [
   {
     id: "8990ff9d-7c88-4127-92ca-bab3e594c7da",
     weight: 45,
+    weightUnits: LB as typeof LB,
     name: "Olympic",
     selected: true,
     length: 84,
@@ -10,6 +13,7 @@ export default [
   {
     id: "0d763d30-0927-4f8c-99ce-ece206333cf5",
     weight: 33,
+    weightUnits: LB as typeof LB,
     name: "6-Foot Olympic",
     selected: false,
     length: 72,
@@ -18,6 +22,7 @@ export default [
   {
     id: "9ca1d387-0b7a-4186-9a71-b14eeefb4eb7",
     weight: 17,
+    weightUnits: LB as typeof LB,
     name: "EZ curl",
     selected: false,
     length: 48,

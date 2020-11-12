@@ -11,7 +11,7 @@
   display: inline-block;
   position: relative;
 
-  input {
+  input[type="text"] {
     height: 40px;
     line-height: 40px;
     padding: 0 16px 0 $std-padding;

@@ -42,7 +42,11 @@ const Barbells = ({
         <label htmlFor={barbellKey} className={styles.barbellLabel}>
           <span className={styles.barbellName}>{barbell.name}</span>
           <span className={styles.barbellDesc}>
-            {barbell.length} inches / <DisplayWeight weight={barbell.weight} />
+            {barbell.length} inches /{" "}
+            <DisplayWeight
+              weight={barbell.weight}
+              weightUnits={barbell.weightUnits}
+            />
           </span>
         </label>
       </div>
