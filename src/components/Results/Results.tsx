@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from "react";
+import React, { ReactElement, ChangeEvent, useCallback, useState } from "react";
 
 import { Plates, Barbells } from "../../types";
 import ResultsTable from "./ResultsTable";
@@ -16,15 +16,16 @@ function Results({ plates, barbells }: ResultsProps): ReactElement {
   const [searchValue, setSearchValue] = useState(0);
   const [searchVariance, setSearchVariance] = useState(5);
 
-  const handleFind = useCallback((event) => {
+  const handleFind = useCallback((event?: ChangeEvent<HTMLInputElement>) => {
+    if (!event) {
+      setSearchValue(0);
+      return;
+    }
+
     const { value } = event.currentTarget;
-    // NOTE: start search after 1 or 2 characters?
-    // if (value.length < 2) {
-    //   setSearchValue("");
-    //   return;
-    // }
-    setSearchValue(value);
+    setSearchValue(Number(value));
   }, []);
+
   const handleSearchVarianceChange = useCallback((value: number) => {
     setSearchVariance(value);
   }, []);

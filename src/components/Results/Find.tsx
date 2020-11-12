@@ -1,4 +1,12 @@
-import React, { ChangeEvent, ReactElement } from "react";
+import React, {
+  ChangeEvent,
+  ReactElement,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
+import cn from "classnames";
+import { X } from "phosphor-react";
 import Select, { ValueType, StylesConfig } from "react-select";
 
 import {
@@ -44,7 +52,7 @@ const customSelectStyles: StylesConfig = {
 };
 
 export interface FindProps {
-  onSearchChange: (event: ChangeEvent) => void;
+  onSearchChange: (event?: ChangeEvent<HTMLInputElement>) => void;
   onSearchVarianceChange: (value: number) => void;
 }
 
@@ -53,17 +61,47 @@ const Find = ({
   onSearchVarianceChange,
 }: FindProps): ReactElement => {
   const { units }: GlobalUnitsContextValues = useGlobalUnitsContext();
+  const [focused, setFocused] = useState(false);
+  const ref = useRef<HTMLInputElement>(null);
+
+  const handleClearSearch = useCallback(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+
+    onSearchChange();
+    ref.current.value = "";
+    ref.current.focus();
+  }, [onSearchChange]);
 
   return (
     <div className={styles.find}>
-      <span className={styles.findInput}>
+      <span
+        className={cn(styles.findInput, {
+          [styles.focused]: focused,
+        })}
+      >
         <input
+          id="find-weight-input"
+          ref={ref}
           type="text"
           placeholder="Find weight, e.g. 135"
           onChange={onSearchChange}
+          onFocus={(): void => setFocused(true)}
+          onBlur={(): void => setFocused(false)}
           className={styles.find}
           title="Find weight, e.g. 135"
         />
+        <button
+          type="button"
+          aria-label="Clear search"
+          onClick={(): void => handleClearSearch()}
+          onFocus={(): void => setFocused(true)}
+          onBlur={(): void => setFocused(false)}
+          className={styles.clearBtn}
+        >
+          <X size={20} />
+        </button>
       </span>
       <span className={styles.separator}>within</span>
       <Select
