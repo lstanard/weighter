@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { ReactElement, useCallback, useState } from "react";
+import cn from "classnames";
 import Select, { ValueType, StylesConfig } from "react-select";
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,6 +9,7 @@ import { EquipmentPanelProps } from "./EquipmentPanel";
 import Checkbox from "../Checkbox";
 import Button from "../Button";
 import DisplayWeight from "../DisplayWeight";
+import removeIcon from "../../assets/icon-remove.svg";
 
 import styles from "./Plates.module.scss";
 import { KG, LB } from "../../constants/units";
@@ -162,10 +164,9 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
    * This should really be its own component.
    */
   const addPlates = (
-    <div>
+    <div className={styles.addPlatesForm}>
       <label>Weight</label>
       <input type="text" id="add-plate-weight" />
-      {/* Select for LB or KG */}
       <Select options={PLATE_UNITS_OPTIONS} />
       <label>Quantity</label>
       <input type="text" id="add-plate-qty" />
@@ -190,6 +191,9 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
     []
   );
 
+  /**
+   * This should really be its own component.
+   */
   const plateOptions = plates
     .sort((a, b) => a.weight - b.weight)
     .map((plate) => {
@@ -232,14 +236,16 @@ const Plates = ({ plates, updatePlates }: PlatesProps): ReactElement => {
               aria-labelledby={`label-${plateKey}`}
             />
           </span>
-          {isEditing && (
-            <button
-              type="button"
-              onClick={(): void => handleRemovePlate(plate)}
-            >
-              x
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={(): void => handleRemovePlate(plate)}
+            aria-label="Remove"
+            className={cn(styles.plateRemoveBtn, {
+              [styles.plateRemoveBtnVisible]: isEditing,
+            })}
+          >
+            <img src={removeIcon} alt="Remove" />
+          </button>
         </div>
       );
     });

@@ -69,3 +69,33 @@
   font-size: 14px;
   width: 44px;
 }
+
+.plateRemoveBtn {
+  height: 20px;
+  opacity: 0;
+  transition: all $transition-duration;
+  visibility: hidden;
+  width: 0;
+
+  &Visible {
+    opacity: 1;
+    transition: all $transition-duration;
+    visibility: visible;
+    width: 20px;
+  }
+}
+
+.addPlatesForm {
+  label {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  input[type="text"] {
+    background-color: $dark-night-blue;
+    color: $snow;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+  }
+}
