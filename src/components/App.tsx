@@ -14,12 +14,15 @@ function App(): ReactElement {
   return (
     <GlobalUnitsContextProvider>
       <div className="main">
-        <EquipmentPanel
-          plates={plates}
-          barbells={barbells}
-          updatePlates={setPlates}
-          updateBarbells={setBarbells}
-        />
+        {/* TODO: make new Drawer component */}
+        <div className="drawer">
+          <EquipmentPanel
+            plates={plates}
+            barbells={barbells}
+            updatePlates={setPlates}
+            updateBarbells={setBarbells}
+          />
+        </div>
         <Results plates={plates} barbells={barbells} />
       </div>
     </GlobalUnitsContextProvider>

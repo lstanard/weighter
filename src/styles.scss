@@ -35,11 +35,23 @@ html {
 
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   min-height: 100vh;
+
+  @include media(">=phone") {
+    flex-direction: row;
+  }
 }
 
-.availability-panel {
-  width: 70%;
+.drawer {
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden; // TEMP hide while I style table
+  z-index: $sidebar-drawer-z;
+
+  @include media(">=tablet") {
+    position: relative;
+  }
 }
