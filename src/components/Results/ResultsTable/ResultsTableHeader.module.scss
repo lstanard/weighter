@@ -1,6 +1,50 @@
 @import "../../../scss/globals";
 @import "../variables";
 
+.tableHeader {
+  align-items: center;
+  background-color: $night-blue;
+  color: $snow;
+  display: flex;
+  flex-direction: row;
+  height: $results-table-header-height;
+  justify-content: space-between;
+  padding: #{$std-padding / 2} $std-padding;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.tableHeaderColTitle {
+  @include table-header-cell-text();
+
+  padding: $results-table-cell-padding;
+  white-space: nowrap;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+.tableHeaderColPlates {
+  width: $results-table-plates-col-width;
+}
+
+.tableHeaderColBarbell {
+  text-align: center;
+  width: $results-table-barbell-col-width;
+}
+
+.tableHeaderColTotal {
+  text-align: center;
+  width: $results-table-total-col-width;
+}
+
 .tableHeaderColTotal {
   padding: 0;
 }
@@ -10,8 +54,8 @@
 
   align-items: center;
   display: flex;
-  margin-bottom: 1px;
-  padding: $results-table-header-padding;
+  margin: 0 auto;
+  padding: $results-table-cell-padding;
   position: relative;
 }
 

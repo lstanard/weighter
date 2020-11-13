@@ -1,0 +1,67 @@
+@import "../../../scss/globals";
+@import "../variables";
+
+$table-row-cell-padding: #{$results-table-cell-padding * 1.25} $results-table-cell-padding;
+
+.tableBody {
+  padding: #{$std-padding / 2} $std-padding $std-padding;
+}
+
+.tableRow {
+  align-items: center;
+  border-bottom: 1px solid $concrete;
+  color: $chocolate;
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  height: 45px;
+  justify-content: space-between;
+  padding: 0;
+  transition: all $transition-duration;
+
+  &:focus,
+  &:active {
+    color: $green;
+  }
+}
+
+.tableColPlates {
+  padding: $table-row-cell-padding;
+  width: $results-table-plates-col-width;
+}
+
+.tableColBarbell {
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 100%;
+  padding: $table-row-cell-padding;
+  text-align: center;
+  width: $results-table-barbell-col-width;
+}
+
+.tableColTotal {
+  padding: $table-row-cell-padding;
+  text-align: center;
+  width: $results-table-total-col-width;
+}
+
+.resultGroup {
+  display: inline-block;
+}
+
+.resultPlate {
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 5px 0 0;
+  min-width: 60px;
+  text-align: center;
+}
+
+.resultPlateQty {
+  font-size: 12px;
+  margin-right: 2px;
+  opacity: 0.6;
+}
+
+.totalWeightAmt {
+  font-weight: 500;
+}

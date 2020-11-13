@@ -8,96 +8,14 @@
   height: 100%;
   overflow: auto;
   max-height: calc(100vh - #{$std-padding * 2} - #{$results-header-height});
-  padding: 15px 30px;
   width: 100%;
-
-  p,
-  p strong {
-    color: #000;
-  }
-
-  table {
-    text-align: left;
-    width: 100%;
-
-    th {
-      vertical-align: top;
-    }
-
-    td,
-    th {
-      vertical-align: middle;
-    }
-
-    th {
-      min-height: 26px;
-      padding: $results-table-header-padding;
-      white-space: nowrap;
-    }
-
-    td {
-      border-bottom: 1px solid $concrete;
-      color: $chocolate;
-      font-size: 20px;
-      padding: 10px 8px 10px 0;
-    }
-
-    tr:focus,
-    tr:active {
-      td {
-        color: $green;
-      }
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-  }
-
-  .tableHeaderColPlates,
-  .tableColPlates {
-    width: 55%;
-  }
-
-  .tableHeaderColBarbell,
-  .tableColBarbell {
-    text-align: center;
-    width: 30%;
-  }
-
-  .tableHeaderColTotal,
-  .tableColTotal {
-    text-align: center;
-    width: 15%;
-  }
-
-  .tableHeaderColPlates,
-  .tableHeaderColBarbell,
-  .tableHeaderColTotal {
-    @include table-header-cell-text();
-  }
 }
 
-.resultGroup {
-  display: inline-block;
-}
-
-.resultPlate {
-  border-radius: 3px;
-  display: inline-block;
-  margin-right: 3px;
-  min-width: 60px;
-  text-align: center;
-}
-
-.resultPlateQty {
-  font-size: 12px;
-  margin-right: 2px;
-  opacity: 0.6;
-}
-
-.totalWeightAmt {
-  font-weight: 500;
+.table {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
 }
 
 .noResults {

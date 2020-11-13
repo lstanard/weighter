@@ -1,5 +1,5 @@
 /* eslint-disable no-return-assign */
-import React, { ReactElement, useMemo, useState } from "react";
+import React, { ReactElement, useMemo, useState, useCallback } from "react";
 
 import { Plate, Plates, Barbell, Barbells, TableSort } from "../../../types";
 import {
@@ -7,8 +7,8 @@ import {
   getPlatesTotalWeight,
   getResultId,
 } from "../../../utils";
-import DisplayWeight from "../../DisplayWeight";
 import ResultsTableHeader from "./ResultsTableHeader";
+import ResultsTableBody from "./ResultsTableBody";
 
 import styles from "./ResultsTable.module.scss";
 import { ASC, TOTAL_WEIGHT } from "../../../constants/sort";
@@ -41,30 +41,6 @@ export interface Result {
   plates: ResultPlate[];
 }
 
-/**
- * Utility for performing some additional transformations on the plates data
- * before being ready to be rendered - such as grouping plates of the same
- * weight and determining the total quantity.
- *
- * @param plates
- */
-const getResultPlates = (plates: number[]): ResultPlate[] => {
-  const result: ResultPlates = {};
-  plates.forEach((plate) => {
-    if (!(plate in result)) {
-      result[`${plate}`] = {
-        quantity: 2,
-        weight: plate,
-      };
-    } else {
-      result[`${plate}`].quantity = result[`${plate}`].quantity + 2;
-    }
-  });
-  return Object.keys(result)
-    .sort((a, b) => Number(a) - Number(b))
-    .map((key) => result[key]);
-};
-
 export interface ResultsTableProps {
   plates: Plates;
   barbells: Barbells;
@@ -83,6 +59,30 @@ const ResultsTable = ({
     sortOrder: ASC,
   };
   const [sortOptions, setSortOptions] = useState<TableSort>(defaultSortOptions);
+
+  /**
+   * Utility for performing some additional transformations on the plates data
+   * before being ready to be rendered - such as grouping plates of the same
+   * weight and determining the total quantity.
+   *
+   * @param plates
+   */
+  const getResultPlates = useCallback((plates: number[]): ResultPlate[] => {
+    const result: ResultPlates = {};
+    plates.forEach((plate) => {
+      if (!(plate in result)) {
+        result[`${plate}`] = {
+          quantity: 2,
+          weight: plate,
+        };
+      } else {
+        result[`${plate}`].quantity = result[`${plate}`].quantity + 2;
+      }
+    });
+    return Object.keys(result)
+      .sort((a, b) => Number(a) - Number(b))
+      .map((key) => result[key]);
+  }, []);
 
   /**
    * Creates a result set based on all of the available, selected
@@ -186,41 +186,16 @@ const ResultsTable = ({
     return null;
   }, [searchValue, searchVariance, sortedResults]);
 
-  const tableRows = finalResults?.map((result) => (
-    <tr id={result.id} key={result.id} tabIndex={0}>
-      <td className={styles.tableColPlates}>
-        {result.plates.map((plate) => (
-          <div
-            key={`${result.id}-${plate.weight}`}
-            className={styles.resultGroup}
-          >
-            <span className={styles.resultPlate}>
-              <span className={styles.resultPlateQty}>{plate.quantity}x</span>
-              <DisplayWeight weight={plate.weight} displayUnits={false} />
-            </span>
-          </div>
-        ))}
-      </td>
-      <td className={styles.tableColBarbell}>{result.barbell.name}</td>
-      <td className={styles.tableColTotal}>
-        <DisplayWeight
-          weight={result.totalWeight}
-          weightClassName={styles.totalWeightAmt}
-        />
-      </td>
-    </tr>
-  ));
-
   return (
     <div className={styles.container}>
       {finalResults?.length ? (
-        <table>
+        <div className={styles.table}>
           <ResultsTableHeader
             sortOptions={sortOptions}
             setSortOptions={setSortOptions}
           />
-          <tbody>{tableRows}</tbody>
-        </table>
+          <ResultsTableBody tableResults={finalResults} />
+        </div>
       ) : (
         <div className={styles.noResults}>
           <h3>No results</h3>
