@@ -137,7 +137,7 @@ const ResultsTable = ({
     });
 
     return results;
-  }, [barbells, plates]);
+  }, [barbells, plates, getResultPlates]);
 
   /**
    * Sort results
