@@ -4,7 +4,13 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+
+  @include media(">=phone") {
+    justify-content: flex-start;
+  }
 }
 
 .findInput {
@@ -16,7 +22,10 @@
     line-height: 40px;
     padding: 0 16px 0 $std-padding;
     transition: all $transition-duration;
-    width: 230px;
+
+    @include media(">=tablet") {
+      width: 230px;
+    }
   }
 
   // TODO: switch to phosphor icon

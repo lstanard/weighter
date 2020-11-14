@@ -9,11 +9,15 @@ import {
 
 import styles from "./UnitToggle.module.scss";
 
-const UnitToggle = (): ReactElement => {
+export interface UnitToggleProps {
+  className?: string;
+}
+
+const UnitToggle = ({ className }: UnitToggleProps): ReactElement => {
   const { units, setUnits }: GlobalUnitsContextValues = useGlobalUnitsContext();
 
   return (
-    <div className={styles.container}>
+    <div className={cn(styles.container, className)}>
       <button
         type="button"
         onClick={(): void => setUnits(LB)}

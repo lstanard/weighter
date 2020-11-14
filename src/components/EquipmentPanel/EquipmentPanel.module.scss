@@ -5,8 +5,12 @@
   padding: #{$std-padding / 2} $std-padding;
   height: auto;
   min-height: 100vh;
-  max-width: $sidebar-max-width;
-  min-width: $sidebar-min-width;
+  transition: width $transition-duration;
+  width: $sidebar-tablet-width;
+
+  @include media(">desktop") {
+    width: $sidebar-desktop-width;
+  }
 
   p,
   label {

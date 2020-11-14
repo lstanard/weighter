@@ -1,5 +1,6 @@
 import React from "react";
 
+import messages from "../../../constants/messages";
 import DisplayWeight from "../../DisplayWeight";
 import { Result } from "./ResultsTable";
 
@@ -18,20 +19,29 @@ const ResultsTableBody = ({ tableResults }: ResultsTableBodyProps) => {
       className={styles.tableRow}
     >
       <div className={styles.tableColPlates}>
+        <span className={styles.tableColLabel}>
+          {messages.TableColLabelPlates}
+        </span>
         {result.plates.map((plate) => (
-          <div
+          <span
             key={`${result.id}-${plate.weight}`}
-            className={styles.resultGroup}
+            className={styles.plateGroup}
           >
-            <span className={styles.resultPlate}>
-              <span className={styles.resultPlateQty}>{plate.quantity}x</span>
-              <DisplayWeight weight={plate.weight} displayUnits={false} />
-            </span>
-          </div>
+            <span className={styles.resultPlateQty}>{plate.quantity}x</span>
+            <DisplayWeight weight={plate.weight} displayUnits={false} />
+          </span>
         ))}
       </div>
-      <div className={styles.tableColBarbell}>{result.barbell.name}</div>
+      <div className={styles.tableColBarbell}>
+        <span className={styles.tableColLabel}>
+          {messages.TableColLabelBarbell}
+        </span>
+        {result.barbell.name}
+      </div>
       <div className={styles.tableColTotal}>
+        <span className={styles.tableColLabel}>
+          {messages.TableColLabelTotal}
+        </span>
         <DisplayWeight
           weight={result.totalWeight}
           weightClassName={styles.totalWeightAmt}
@@ -39,6 +49,7 @@ const ResultsTableBody = ({ tableResults }: ResultsTableBodyProps) => {
       </div>
     </div>
   ));
+
   return <div className={styles.tableBody}>{tableRows}</div>;
 };
 

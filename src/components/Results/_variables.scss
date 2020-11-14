@@ -1,6 +1,9 @@
+$results-header-height-mobile: 40px;
+$results-header-margin: 16px;
 $results-header-height: 90px;
 
 $results-table-cell-padding: 8px;
+$results-table-header-height-mobile: 42px;
 $results-table-header-height: 50px;
 $results-table-plates-col-width: 60%;
 $results-table-barbell-col-width: 20%;
@@ -8,7 +11,11 @@ $results-table-total-col-width: 20%;
 
 @mixin table-header-cell-text {
   color: $cream;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
+
+  @include media(">=tablet") {
+    font-size: 16px;
+  }
 }

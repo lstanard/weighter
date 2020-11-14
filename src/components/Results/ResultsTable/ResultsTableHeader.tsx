@@ -3,6 +3,7 @@ import cn from "classnames";
 import { SortAscending, SortDescending } from "phosphor-react";
 
 import { ASC, DESC, TOTAL_WEIGHT } from "../../../constants/sort";
+import messages from "../../../constants/messages";
 import { TableSort } from "../../../types";
 
 import styles from "./ResultsTableHeader.module.scss";
@@ -21,12 +22,12 @@ const ResultsTableHeader = ({
       <div
         className={cn(styles.tableHeaderColPlates, styles.tableHeaderColTitle)}
       >
-        Plates
+        {messages.TableColLabelPlates}
       </div>
       <div
         className={cn(styles.tableHeaderColBarbell, styles.tableHeaderColTitle)}
       >
-        Barbell
+        {messages.TableColLabelBarbell}
       </div>
       <div
         className={cn(styles.tableHeaderColTotal, styles.tableHeaderColTitle)}
@@ -44,7 +45,7 @@ const ResultsTableHeader = ({
           })}
           aria-label="Sort table by total weight"
         >
-          Total Weight
+          {messages.TableColLabelTotal}
           {sortOptions.sortOrder === ASC ? (
             <SortDescending size={24} className={styles.sortIcon} />
           ) : (

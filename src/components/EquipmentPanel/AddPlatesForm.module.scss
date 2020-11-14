@@ -9,7 +9,7 @@ $margin: 8px;
   height: 0;
   justify-content: space-between;
   margin: 0;
-  max-width: #{$sidebar-max-width - $std-padding * 2};
+  max-width: #{$sidebar-desktop-width - $std-padding * 2};
   opacity: 0;
   transition: all $transition-duration;
   visibility: hidden;

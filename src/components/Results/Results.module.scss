@@ -15,7 +15,23 @@
 .resultsHeader {
   align-items: center;
   display: flex;
-  height: $results-header-height;
+  flex-direction: column;
+  height: $results-header-height-mobile;
   justify-content: space-between;
-  position: sticky;
+  margin: 0 0 $results-header-margin;
+
+  @include media(">=tablet") {
+    display: flex;
+    flex-direction: row;
+    height: $results-header-height;
+    margin: 0;
+  }
+}
+
+.unitToggle {
+  display: none;
+
+  @include media(">=tablet") {
+    display: flex;
+  }
 }

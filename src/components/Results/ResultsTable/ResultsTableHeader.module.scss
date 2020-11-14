@@ -7,13 +7,19 @@
   color: $snow;
   display: flex;
   flex-direction: row;
-  height: $results-table-header-height;
-  justify-content: space-between;
-  padding: #{$std-padding / 2} $std-padding;
+  height: $results-table-header-height-mobile;
+  justify-content: flex-end;
+  padding: #{$std-padding / 3} #{$std-padding / 2};
   position: sticky;
   top: 0;
   width: 100%;
   z-index: $results-table-header-z;
+
+  @include media(">=desktop") {
+    height: $results-table-header-height;
+    justify-content: space-between;
+    padding: #{$std-padding / 2} $std-padding;
+  }
 }
 
 .tableHeaderColTitle {
@@ -32,17 +38,29 @@
 }
 
 .tableHeaderColPlates {
-  width: $results-table-plates-col-width;
+  display: none;
+
+  @include media(">=desktop") {
+    display: block;
+    width: $results-table-plates-col-width;
+  }
 }
 
 .tableHeaderColBarbell {
-  text-align: center;
-  width: $results-table-barbell-col-width;
+  display: none;
+
+  @include media(">=desktop") {
+    display: block;
+    text-align: center;
+    width: $results-table-barbell-col-width;
+  }
 }
 
 .tableHeaderColTotal {
-  text-align: center;
-  width: $results-table-total-col-width;
+  @include media(">=desktop") {
+    text-align: center;
+    width: $results-table-total-col-width;
+  }
 }
 
 .tableHeaderColTotal {

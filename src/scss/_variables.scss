@@ -2,8 +2,8 @@
 $std-padding: 36px;
 $std-margin: 30px;
 
-$sidebar-max-width: 320px;
-$sidebar-min-width: 290px;
+$sidebar-tablet-width: 240px;
+$sidebar-desktop-width: 290px;
 
 $sidebar-drawer-z: 2;
 $results-table-header-z: 1;
@@ -27,6 +27,7 @@ $slate: #333;
 $chocolate: #746766;
 $cream: #ebeae3;
 $silver: #e3dfda;
+$black-05: rgba(0, 0, 0, 0.05);
 $snow-50: rgba(255, 255, 255, 0.5);
 $snow-30: rgba(255, 255, 255, 0.3);
 $snow-10: rgba(255, 255, 255, 0.1);

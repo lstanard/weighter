@@ -80,7 +80,7 @@ const ResultsTable = ({
       }
     });
     return Object.keys(result)
-      .sort((a, b) => Number(a) - Number(b))
+      .sort((a, b) => Number(b) - Number(a))
       .map((key) => result[key]);
   }, []);
 

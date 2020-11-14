@@ -45,6 +45,10 @@ input[type="text"] {
   border: 0;
   border-radius: 6px;
   font-family: "Rubik", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   padding: 8px;
+
+  @include media(">=tablet") {
+    font-size: 16px;
+  }
 }

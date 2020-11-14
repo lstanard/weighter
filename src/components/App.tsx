@@ -1,11 +1,11 @@
 import React, { ReactElement, useState } from "react";
 
-import { GlobalUnitsContextProvider } from "./useGlobalUnitsContext";
-import EquipmentPanel from "./EquipmentPanel/EquipmentPanel";
-import Results from "./Results";
 import { Plate, Barbell } from "../types";
 import barbellData from "../data/barbells";
 import plateData from "../data/plates";
+import { GlobalUnitsContextProvider } from "./useGlobalUnitsContext";
+import EquipmentPanel from "./EquipmentPanel/EquipmentPanel";
+import Results from "./Results";
 
 function App(): ReactElement {
   const [barbells, setBarbells] = useState<Barbell[]>(barbellData);
@@ -14,7 +14,6 @@ function App(): ReactElement {
   return (
     <GlobalUnitsContextProvider>
       <div className="main">
-        {/* TODO: make new Drawer component */}
         <div className="drawer">
           <EquipmentPanel
             plates={plates}

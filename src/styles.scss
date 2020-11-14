@@ -39,19 +39,20 @@ html {
   height: 100%;
   min-height: 100vh;
 
-  @include media(">=phone") {
+  @include media(">=tablet") {
     flex-direction: row;
   }
 }
 
 .drawer {
+  display: none;
   left: 0;
   position: absolute;
   top: 0;
-  visibility: hidden; // TEMP hide while I style table
   z-index: $sidebar-drawer-z;
 
   @include media(">=tablet") {
+    display: block;
     position: relative;
   }
 }

@@ -1,9 +1,9 @@
 import React, { ReactElement, ChangeEvent, useCallback, useState } from "react";
 
 import { Plates, Barbells } from "../../types";
+import UnitToggle from "../UnitToggle";
 import ResultsTable from "./ResultsTable";
 import Find from "./Find";
-import UnitToggle from "./UnitToggle";
 
 import styles from "./Results.module.scss";
 
@@ -37,7 +37,7 @@ function Results({ plates, barbells }: ResultsProps): ReactElement {
           onSearchChange={handleFind}
           onSearchVarianceChange={handleSearchVarianceChange}
         />
-        <UnitToggle />
+        <UnitToggle className={styles.unitToggle} />
       </div>
       <ResultsTable
         plates={plates}

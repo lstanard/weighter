@@ -2,58 +2,120 @@
 @import "../variables";
 
 $table-row-cell-padding: #{$results-table-cell-padding * 1.25} $results-table-cell-padding;
+$table-row-cell-padding-mobile: #{$results-table-cell-padding * 2};
 
 .tableBody {
-  padding: #{$std-padding / 2} $std-padding $std-padding;
+  padding: #{$std-padding / 4} #{$std-padding / 2} #{$std-padding / 3};
+
+  @include media(">=desktop") {
+    padding: #{$std-padding / 2} $std-padding $std-padding;
+  }
 }
 
 .tableRow {
-  align-items: center;
-  border-bottom: 1px solid $concrete;
+  align-items: flex-start;
   color: $chocolate;
   display: flex;
   flex-direction: row;
-  font-size: 18px;
-  height: 45px;
-  justify-content: space-between;
-  padding: 0;
+  flex-wrap: wrap;
+  font-size: 16px;
+  height: auto;
+  justify-content: flex-start;
+  padding: $table-row-cell-padding-mobile $table-row-cell-padding-mobile 0;
   transition: all $transition-duration;
 
   &:focus,
   &:active {
     color: $green;
   }
+
+  &:nth-child(even) {
+    background-color: $black-05;
+    border-radius: $border-radius;
+  }
+
+  @include media(">=desktop") {
+    align-items: center;
+    border-bottom: 1px solid $concrete;
+    flex-direction: row;
+    font-size: 18px;
+    height: 45px;
+    justify-content: space-between;
+    padding: 0;
+
+    &:nth-child(even) {
+      background-color: transparent;
+      border-radius: 0;
+    }
+  }
 }
 
 .tableColPlates {
-  padding: $table-row-cell-padding;
-  width: $results-table-plates-col-width;
+  border-top: 1px solid $black-05;
+  margin: 6px 0 12px;
+  padding: 8px 0 0;
+  order: 3;
+  width: 100%;
+
+  @include media(">=desktop") {
+    border: none;
+    margin: 0;
+    order: 1;
+    padding: $table-row-cell-padding;
+    width: $results-table-plates-col-width;
+  }
 }
 
 .tableColBarbell {
-  background-color: rgba(0, 0, 0, 0.05);
-  height: 100%;
-  padding: $table-row-cell-padding;
-  text-align: center;
-  width: $results-table-barbell-col-width;
+  order: 1;
+  width: 50%;
+
+  @include media(">=desktop") {
+    background-color: $black-05;
+    height: 100%;
+    order: 2;
+    padding: $table-row-cell-padding;
+    text-align: center;
+    width: $results-table-barbell-col-width;
+  }
 }
 
 .tableColTotal {
-  padding: $table-row-cell-padding;
-  text-align: center;
-  width: $results-table-total-col-width;
+  order: 2;
+  text-align: right;
+  width: 50%;
+
+  @include media(">=desktop") {
+    order: 3;
+    padding: $table-row-cell-padding;
+    text-align: center;
+    width: $results-table-total-col-width;
+  }
 }
 
-.resultGroup {
-  display: inline-block;
+.tableColLabel {
+  display: block;
+  font-size: 10px;
+  margin: 0 0 2px;
+  opacity: 0.7;
+  text-transform: uppercase;
+
+  @include media(">=desktop") {
+    @include visually-hidden();
+  }
 }
 
-.resultPlate {
-  border-radius: 3px;
+.plateGroup {
   display: inline-block;
-  margin: 0 5px 0 0;
-  min-width: 60px;
+  font-size: 20px;
+  margin: 0 8px 0 0;
   text-align: center;
+
+  @include media(">=desktop") {
+    font-size: 18px;
+    margin: 0 5px 0 0;
+    min-width: 60px;
+  }
 }
 
 .resultPlateQty {
