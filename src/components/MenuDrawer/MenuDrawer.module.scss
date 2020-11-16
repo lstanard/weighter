@@ -33,16 +33,22 @@ $btn-size: 60px;
   width: $sidebar-mobile-width;
   z-index: $sidebar-drawer-z;
 
-  @include media(">=tablet") {
-    position: relative;
-    transform: unset;
-    width: auto;
-  }
-
   &.visible {
     box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.7);
     transform: translateX(0);
     transition: all #{$transition-duration * 2.25};
+  }
+
+  @include media(">=tablet") {
+    box-shadow: none;
+    overflow: visible;
+    position: relative;
+    transform: unset;
+    width: auto;
+
+    &.visible {
+      box-shadow: none;
+    }
   }
 }
 
