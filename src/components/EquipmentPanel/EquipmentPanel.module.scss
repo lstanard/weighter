@@ -6,7 +6,11 @@
   height: auto;
   min-height: 100vh;
   transition: width $transition-duration;
-  width: $sidebar-tablet-width;
+  width: 100%;
+
+  @include media(">tablet") {
+    width: $sidebar-tablet-width;
+  }
 
   @include media(">desktop") {
     width: $sidebar-desktop-width;

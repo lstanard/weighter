@@ -2,10 +2,14 @@
 $std-padding: 36px;
 $std-margin: 30px;
 
+$mobile-menu-height: 40px;
+$sidebar-mobile-width: 90%;
 $sidebar-tablet-width: 240px;
 $sidebar-desktop-width: 290px;
 
-$sidebar-drawer-z: 2;
+$mobile-menu-btn-z: 4;
+$sidebar-drawer-z: 3;
+$sidebar-drawer-overlay-z: 2;
 $results-table-header-z: 1;
 
 // Style
@@ -13,6 +17,8 @@ $border-radius: 6px;
 
 // Transitions
 $transition-duration: 0.15s;
+$ease-out-quad: cubic-bezier(0.5, 1, 0.89, 1);
+$ease-in-quad: cubic-bezier(0.45, 0, 0.55, 1);
 
 // Colors
 $blue: #4981b2;

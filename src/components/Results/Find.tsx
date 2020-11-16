@@ -85,12 +85,12 @@ const Find = ({
           id="find-weight-input"
           ref={ref}
           type="text"
-          placeholder="Find weight, e.g. 135"
+          placeholder="Find weight"
           onChange={onSearchChange}
           onFocus={(): void => setFocused(true)}
           onBlur={(): void => setFocused(false)}
           className={styles.find}
-          title="Find weight, e.g. 135"
+          title="Find weight"
         />
         <button
           type="button"
