@@ -30,7 +30,7 @@ type OptionType = { label: string; value: number };
 const customSelectStyles: StylesConfig = {
   container: (provided) => ({
     ...provided,
-    zIndex: 100,
+    zIndex: 2,
   }),
   control: (provided) => ({
     ...provided,

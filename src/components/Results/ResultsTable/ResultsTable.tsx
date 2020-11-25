@@ -185,6 +185,7 @@ const ResultsTable = ({
     }
 
     return null;
+    // eslint-disable-next-line
   }, [searchValue, searchVariance, sortedResults, sortOptions.sortOrder]);
 
   return (
