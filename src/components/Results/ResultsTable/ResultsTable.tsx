@@ -79,6 +79,7 @@ const ResultsTable = ({
         result[`${plate}`].quantity = result[`${plate}`].quantity + 2;
       }
     });
+    // Order plates from high to low
     return Object.keys(result)
       .sort((a, b) => Number(b) - Number(a))
       .map((key) => result[key]);
@@ -184,7 +185,7 @@ const ResultsTable = ({
     }
 
     return null;
-  }, [searchValue, searchVariance, sortedResults]);
+  }, [searchValue, searchVariance, sortedResults, sortOptions.sortOrder]);
 
   return (
     <div className={styles.container}>
